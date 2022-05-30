@@ -1,0 +1,41 @@
+.comment__line{
+    margin-top: 1rem;
+    width: 100%;
+    display: inline-grid;
+    grid-template: 1fr / 50px 90% ;
+    align-items: center;
+    justify-content: center;
+}
+.comment__line textarea{
+    margin-left: 1rem;
+    padding: 0.2rem !important;
+    width: 95%;
+}
+.comment__line--info{
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+}
+.comment__line--info button{
+    width: 80px;
+    font-size: 1rem;
+    margin-top: 1rem;
+    align-self: flex-end;
+}
+.comment__line--info > p{
+    margin-left: 1rem;
+    margin-bottom: 0;
+    display: flex;
+    align-items: flex-start !important;
+    font-size: 1.5rem !important;
+}
+.comment__text{
+    text-align: justify !important;
+    font-size: 2rem !important;
+}
+.comment__line img{
+    width: 50px !important;
+    height: 50px;
+    border: 2px solid var(--fh_color);
+    border-radius: 50%;
+}

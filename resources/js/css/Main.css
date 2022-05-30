@@ -1,0 +1,201 @@
+:root{
+    --fh_color: rgba(74,147,216);
+    --white: rgba(250,255,253)
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    font-family: Roboto;
+    font-size: 62.5%;
+    min-height: 100%;
+    position: relative;
+}
+body{
+    padding-bottom: 10rem;
+}
+footer a{
+    color: white;
+    text-decoration: none;
+    font-size: 1.6rem;
+}
+header{
+    background-color: var(--fh_color);
+}
+.navbar{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 1rem;
+}
+.navbar-img{
+    width: 8rem;
+}
+.navbar-ul{
+    width:auto;
+    display: flex;
+    flex-direction: row;
+    font-size: 1.7rem;
+    gap: 2rem;
+    justify-content: space-evenly;
+}
+footer{
+    color: white;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    background-color: var(--fh_color);
+    justify-content: center;
+    text-align: center;
+}
+footer > div > p{
+    font-size: 1.2rem;
+    padding-block-end: 1rem;
+}
+footer > .navbar{
+    flex-direction: row-reverse;
+}
+.navbar-ul li {
+    list-style: none;
+}
+.footer-nav{
+    display: flex;
+    justify-content: flex-end;
+}
+.navbar-ul li a{
+    text-decoration: none;
+}
+.button{
+    font-size: 2rem !important;
+}
+footer .navbar{
+    flex-direction: row-reverse;
+}
+.field{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+.field i{
+    font-size: 2rem;
+}
+.login{
+    color: white;
+    background-color: var(--fh_color);
+    text-align: center;
+    margin: 5rem auto;
+    width: 50%;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+.login a{
+    color: white;
+    text-decoration: none;
+    font-size: 1.4rem;
+}
+.something_happen{
+    margin-bottom: 1.3rem !important;
+}
+body > div > h2{
+    font-size: 3rem;
+}
+.button{
+    font-size: 1.6rem;
+}
+.login_button{
+    font-size: 2rem;
+    margin-top: 3rem;
+}
+input[type="email"], input[type="password"]{
+    font-size: 2rem;
+}
+.notFound{
+    display: flex;
+    margin: 0 auto;
+    margin-top: 12rem;
+    flex-direction: column;
+    width: 80%;
+    place-content: center center;
+}
+.notFound > p {
+    text-align: center;
+}
+.notFound__status{
+    text-align: center;
+    font-size: 4em;
+}
+.notFound__message{
+    font-size: 3rem;
+}
+
+@media (max-width: 901px) {
+    .navbar{
+        flex-direction: row;
+        gap: 1rem;
+    }
+    .navbar-ul{
+        font-size: 1.3rem !important;
+    }
+}
+@media (max-width: 900px) {
+    header .navbar{
+        padding: 0;
+        justify-content: center;
+    }
+    header .navbar img{
+        margin-bottom: 1rem;
+    }
+    .navbar-ul{
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        gap: 0;
+    }
+    .button{
+        width: 100%;
+        border-radius: 0 !important;
+    }
+    .hide{
+        display: none;
+    }
+    #menu{
+        color: white;
+        display: block;
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        font-size: 3.5rem;;
+        z-index: 90;
+        cursor: pointer;
+    }
+    .login{
+        margin: 3rem auto;
+    }
+}
+@media (min-width: 901px){
+    .hide{
+        display: flex;
+    }
+    #menu{
+        display: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .login{
+        width: 80%;
+    }
+}

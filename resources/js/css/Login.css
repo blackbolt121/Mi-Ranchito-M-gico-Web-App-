@@ -1,0 +1,63 @@
+.field{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+.field i{
+    font-size: 2rem;
+}
+.login{
+    color: white;
+    background-color: var(--fh_color);
+    text-align: center;
+    min-width: 20%;
+    max-width: 600px;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+.login h2 {
+    font-size: 3.5rem;
+}
+.login a{
+    color: white;
+    text-decoration: none;
+    font-size: 1.4rem;
+}
+.something_happen{
+    margin-bottom: 1.3rem !important;
+}
+body > div > h2{
+    font-size: 3rem;
+}
+.button{
+    font-size: 1.6rem;
+    padding: 1rem !important;
+}
+.login_button{
+    font-size: 2rem !important;
+    padding: 1rem !important;
+    border-radius: 0.5rem !important;
+    margin-top: 1rem;
+}
+input[type="email"], input[type="password"]{
+    font-size: 2rem;
+}
+
+@media (min-width: 200px) and (max-width: 767px) {
+    .login{
+        width: 95%;
+    }
+}
+@media (max-width: 768px) {
+    .login{
+        margin: 3rem auto;
+    }
+}

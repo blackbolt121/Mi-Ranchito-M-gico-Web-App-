@@ -1,0 +1,13 @@
+.VistGo__add{
+    align-self: flex-end;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+.VistGo__add button{
+    padding: 1rem 2rem;
+    width: 100%;
+    background-color: #0d6efd;
+    border: none;
+    color: white;
+    cursor: pointer;
+}

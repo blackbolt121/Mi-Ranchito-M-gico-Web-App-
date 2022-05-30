@@ -1,0 +1,84 @@
+#email{
+
+}
+.register_form{
+    background-color: var(--fh_color);
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 70%;
+    margin: 3rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: center;
+}
+.register_submit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.register_submit button{
+    padding: 1rem;
+    font-size: 2rem !important;
+    border-radius: 1rem;
+    color: white;
+}
+.register_campo{
+    display: grid;
+    gap: 0.3rem;
+    align-items: center;
+    grid-template-columns: 15% 85%;
+    justify-content: center;
+}
+.register_campo > svg{
+    align-self: center;
+    font-size: 3rem;
+    text-align: center;
+    color: white !important;
+}
+.register_campo label{
+    font-size: 2rem;
+    text-align: center;
+    color: white !important;
+}
+.register_campo input, .register_campo select{
+    font-size: 1.6rem;
+    outline: none;
+    width: 100%;
+    border: none;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.register_icon{
+    color: white;
+    font-size: 3rem;
+}
+.register_campo input:focus{
+    outline: none;
+}
+.register_campo_invalid {
+    border: 1px solid red !important;
+}
+.register_title{
+    margin-top: 1rem;
+    color: white;
+    text-align: center;
+    grid-row: 0 / span 2;
+    font-size: 4rem;
+}
+@media (min-width: 200px) {
+    .register_form{
+        width: 95%;
+    }
+}
+@media (min-width: 768px) {
+    .register_form{
+        width: 70%;
+    }
+}
+@media (min-width: 1000px) {
+    .register_form{
+        width: 50%;
+    }
+}
