@@ -77,7 +77,7 @@ class User extends Model
             $session->user_agent = $user_agent;
             $session->ip_address = $ip;
             $session->save();
-            return response()->json(["status"=>"accept"],Response::HTTP_ACCEPTED)->header("X-TOKEN",$id)->withCookie("token",uniqid());
+            return response()->json(["status"=>"accept","token"=>$id],Response::HTTP_ACCEPTED)->header("token",$id)->withCookie("token",uniqid());
         }else{
             return false;
         }
