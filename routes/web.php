@@ -60,4 +60,6 @@ Route::get("/admin/dashboard", function (){
 Route::get("/admin/ranchitos", function (){
     return view("index");
 });
-
+Route::get("/admin/usuarios", function (){
+    return view("index");
+});

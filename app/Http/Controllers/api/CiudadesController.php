@@ -21,7 +21,7 @@ class CiudadesController extends Controller
     public function deleteCiudad(int $id){
         try{
             Ciudad::query()->where("id","=",$id)->delete();
-            return response("{status:'Deleted succesfully'}")->setStatusCode(Response::HTTP_ACCEPTED);
+            return response("{status:\"Deleted succesfully\"}")->setStatusCode(Response::HTTP_ACCEPTED);
         }catch (\Exception $e){
             return response("{status: \"Failed on delete\"}")->setStatusCode(Response::HTTP_CONFLICT);
         }

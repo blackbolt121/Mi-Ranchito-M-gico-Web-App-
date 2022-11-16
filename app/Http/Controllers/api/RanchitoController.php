@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\api;
 
+use App\Models\Ciudad;
 use App\Models\Ranchito;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class RanchitoController extends Controller
 {
@@ -39,5 +42,21 @@ class RanchitoController extends Controller
                 "source" => $e->getTrace()
             ],400);
         }
+    }
+    public function createRanchito(Request $request){
+        $ciudad = json_decode($request->getContent());
+        $id = Ciudad::createCity($ciudad->nombre,$ciudad->estado,$ciudad->municipio,$ciudad->latitud,$ciudad->longitud);
+        $ranchito = new Ranchito();
+        $ranchito->id = $id;
+        if(filter_var($id, FILTER_VALIDATE_INT) && filter_var($ciudad->imagen, FILTER_VALIDATE_URL)){
+            $ranchito->descripcion = $ciudad->descripcion;
+            $ranchito->imagen = $ciudad->imagen;
+            $ranchito->save();
+            return response("{}",Response::HTTP_CREATED);
+        }else{
+            return response("{}",Response::HTTP_NOT_ACCEPTABLE);
+        }
+
+
     }
 }

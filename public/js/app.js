@@ -10132,6 +10132,21 @@ function AdminRanchitos(prop) {
       nombre = _useState6[0],
       setNombre = _useState6[1];
 
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+      _useState8 = _slicedToArray(_useState7, 2),
+      descripcion = _useState8[0],
+      setDescripcion = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+      _useState10 = _slicedToArray(_useState9, 2),
+      imagen = _useState10[0],
+      setImagen = _useState10[1];
+
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState12 = _slicedToArray(_useState11, 2),
+      ranchitos = _useState12[0],
+      setRanchitos = _useState12[1];
+
   function onChange(event) {
     var target_name = event.target.name;
     var target_value = event.target.value;
@@ -10142,6 +10157,10 @@ function AdminRanchitos(prop) {
       setLongitud(target_value);
     } else if (target_name == "nombre") {
       setNombre(target_value);
+    } else if (target_name == "imagen") {
+      setImagen(target_value);
+    } else if (target_name == "descripcion") {
+      setDescripcion(target_value);
     }
   }
 
@@ -10151,20 +10170,24 @@ function AdminRanchitos(prop) {
     setLatitud(0);
     setLongitud(0);
     setNombre("");
+    setDescripcion("");
+    setImagen("");
   }
 
   function crearCiudad(event) {
     event.preventDefault(); //fetch(`http://${network.ip}`)
 
     console.log("Registrando Ciudad");
-    fetch("http://".concat(_network__WEBPACK_IMPORTED_MODULE_2__["default"].ip, "/api/ciudades"), {
+    fetch("http://".concat(_network__WEBPACK_IMPORTED_MODULE_2__["default"].ip, "/api/ranchito"), {
       method: "POST",
       "Content-Type": "application/json",
-      'Accept': 'application/json',
+      accept: "application/json",
       body: JSON.stringify({
         "nombre": nombre,
         "estado": document.getElementById("estado").value,
         "municipio": document.getElementById("municipios").value,
+        "descripcion": descripcion,
+        "imagen": imagen,
         "latitud": latitud,
         "longitud": longitud
       })
@@ -10181,11 +10204,7 @@ function AdminRanchitos(prop) {
     })["catch"](function (error) {
       alert.log(error.message);
       clearFormCiudad();
-    }); //Limpiando el formulario
-  }
-
-  function crearRanchito(event) {
-    event.preventDefault();
+    });
   }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
@@ -10197,7 +10216,7 @@ function AdminRanchitos(prop) {
           textAlign: "center",
           color: "white"
         },
-        children: "Registrar Estado"
+        children: "Registrar Ranchito"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "register_campo",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
@@ -10207,7 +10226,8 @@ function AdminRanchitos(prop) {
           name: "nombre",
           type: "text",
           value: nombre,
-          onChange: onChange
+          onChange: onChange,
+          placeholder: "Nombre del ranchito"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_SelectEstadosMunicipios__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
         className: "register_campo",
@@ -10233,6 +10253,29 @@ function AdminRanchitos(prop) {
           name: "longitud",
           onChange: onChange
         })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "register_campo",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+          htmlFor: "imagen",
+          children: "Imagen"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+          name: "imagen",
+          type: "text",
+          value: imagen,
+          onChange: onChange,
+          placeholder: "Url de imagen"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+        className: "register_campo",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+          htmlFor: "descripcion",
+          children: "Descripci\xF3n"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("textarea", {
+          className: "descripcion",
+          value: descripcion,
+          name: "descripcion",
+          onChange: onChange
+        })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
         className: "register_submit",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
@@ -10241,9 +10284,40 @@ function AdminRanchitos(prop) {
           children: "Registrar"
         })
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("form", {})]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      children: ranchitos
+    })]
   });
 }
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/AdminUsuarios.jsx":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/Admin/AdminUsuarios.jsx ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _HeaderAdmin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./HeaderAdmin */ "./resources/js/components/Admin/HeaderAdmin.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+var AdminUsuarios = function AdminUsuarios(props) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_HeaderAdmin__WEBPACK_IMPORTED_MODULE_1__["default"], {})
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AdminUsuarios);
 
 /***/ }),
 
@@ -10259,22 +10333,103 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Header */ "./resources/js/components/Header.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var _images_logo_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../images/logo.png */ "./resources/js/images/logo.png");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
 
 
 
 
 
 var HeaderAdmin = function HeaderAdmin(props) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      main: {
-        "Cerrar Sesión": "/logout"
-      },
-      routes: {
-        "Dashboard": "/admin/dashboard"
-      }
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("hide"),
+      _useState2 = _slicedToArray(_useState, 2),
+      menu = _useState2[0],
+      setMenu = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    "Ranchito": "/admin/ranchitos",
+    "Usuarios": "/admin/usuarios",
+    "Cerrar Sesión": "/logout"
+  }),
+      _useState4 = _slicedToArray(_useState3, 2),
+      route = _useState4[0],
+      setRoutes = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    "Dashboard": "/admin/dashboard"
+  }),
+      _useState6 = _slicedToArray(_useState5, 2),
+      main = _useState6[0],
+      setMain = _useState6[1];
+
+  var click = function click(event) {
+    if (menu === "hide") {
+      setMenu("");
+    } else {
+      setMenu("hide");
+    }
+  };
+
+  var click2 = function click2(event) {
+    if (menu !== "hide") click(event);
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("header", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("a", {
+        onClick: click,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("i", {
+          id: "menu",
+          className: "fa-solid fa-bars"
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("nav", {
+        className: "navbar",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+          onClick: click2,
+          to: localStorage.getItem("x-token") === null ? "/" : "/dashboard",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+            className: "navbar-img",
+            src: _images_logo_png__WEBPACK_IMPORTED_MODULE_1__["default"],
+            alt: "Mi ranchito Magico"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("ul", {
+          className: "navbar-ul ".concat(menu),
+          children: [Object.keys(route).map(function (x) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+                className: "button btn btn-light",
+                onClick: click2,
+                to: route[x],
+                children: x
+              })
+            }, route[x]);
+          }), Object.keys(main).map(function (x) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("li", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
+                className: "button btn btn-primary",
+                onClick: click2,
+                to: main[x],
+                children: x
+              })
+            }, main[x]);
+          })]
+        })]
+      })]
     })
   });
 };
@@ -10295,8 +10450,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var _css_Main_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../css/Main.css */ "./resources/js/css/Main.css");
 /* harmony import */ var _css_Main2_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../css/Main2.css */ "./resources/js/css/Main2.css");
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Header */ "./resources/js/components/Header.jsx");
@@ -10317,7 +10472,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Admin_AdminLogin__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./Admin/AdminLogin */ "./resources/js/components/Admin/AdminLogin.jsx");
 /* harmony import */ var _Admin_AdminDashboard__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./Admin/AdminDashboard */ "./resources/js/components/Admin/AdminDashboard.jsx");
 /* harmony import */ var _Admin_AdminRanchitos__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./Admin/AdminRanchitos */ "./resources/js/components/Admin/AdminRanchitos.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Admin_AdminUsuarios__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./Admin/AdminUsuarios */ "./resources/js/components/Admin/AdminUsuarios.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 //Librerias
 
  //Estilos
@@ -10347,88 +10503,92 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 function App() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)("link", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)("link", {
       rel: "stylesheet",
       href: "https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css",
       integrity: "sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm",
       crossOrigin: "anonymous"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)("script", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)("script", {
       src: "https://code.jquery.com/jquery-3.2.1.slim.min.js",
       integrity: "sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN",
       crossOrigin: "anonymous"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)("script", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)("script", {
       src: "https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js",
       integrity: "sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q",
       crossOrigin: "anonymous"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)("script", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)("script", {
       src: "https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js",
       integrity: "sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl",
       crossOrigin: "anonymous"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)("link", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)("link", {
       href: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css",
       rel: "stylesheet"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)("link", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)("link", {
       rel: "stylesheet",
       href: "https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css",
       integrity: "sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm",
       crossOrigin: "anonymous"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_22__.BrowserRouter, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Routes, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.BrowserRouter, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_24__.Routes, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_24__.Route, {
           path: "/",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_Index__WEBPACK_IMPORTED_MODULE_11__["default"], {}),
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_Index__WEBPACK_IMPORTED_MODULE_11__["default"], {}),
           exact: true
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_24__.Route, {
           path: "/login",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_Login__WEBPACK_IMPORTED_MODULE_5__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_Login__WEBPACK_IMPORTED_MODULE_5__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_24__.Route, {
           path: "/logout",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_Logout__WEBPACK_IMPORTED_MODULE_6__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_Logout__WEBPACK_IMPORTED_MODULE_6__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_24__.Route, {
           path: "/register",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_Register__WEBPACK_IMPORTED_MODULE_9__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_Register__WEBPACK_IMPORTED_MODULE_9__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_24__.Route, {
           path: "/go",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_ToGo__WEBPACK_IMPORTED_MODULE_8__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_ToGo__WEBPACK_IMPORTED_MODULE_8__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_24__.Route, {
           path: "/go/:id",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_Go__WEBPACK_IMPORTED_MODULE_16__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_Go__WEBPACK_IMPORTED_MODULE_16__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_24__.Route, {
           path: "/dashboard",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_Dashboard__WEBPACK_IMPORTED_MODULE_10__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_Dashboard__WEBPACK_IMPORTED_MODULE_10__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_24__.Route, {
           path: "/dashboard/mapa",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_dashboard_Mapa__WEBPACK_IMPORTED_MODULE_13__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_dashboard_Mapa__WEBPACK_IMPORTED_MODULE_13__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_24__.Route, {
           path: "/dashboard/visitar",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_dashboard_Visitar__WEBPACK_IMPORTED_MODULE_14__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_dashboard_Visitar__WEBPACK_IMPORTED_MODULE_14__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_24__.Route, {
           path: "/dashboard/visitar/:id",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_dashboard_VisitarGo__WEBPACK_IMPORTED_MODULE_15__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_dashboard_VisitarGo__WEBPACK_IMPORTED_MODULE_15__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_24__.Route, {
           path: "/dashboard/recomendaciones",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_dashboard_Recomendaciones__WEBPACK_IMPORTED_MODULE_12__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_dashboard_Recomendaciones__WEBPACK_IMPORTED_MODULE_12__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_24__.Route, {
           path: "/dashboard/recomendaciones/:id",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_dashboard_RecomendacionesGo__WEBPACK_IMPORTED_MODULE_17__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_dashboard_RecomendacionesGo__WEBPACK_IMPORTED_MODULE_17__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_24__.Route, {
           path: "/admin",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_Admin_AdminLogin__WEBPACK_IMPORTED_MODULE_18__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_Admin_AdminLogin__WEBPACK_IMPORTED_MODULE_18__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_24__.Route, {
           path: "/admin/dashboard",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_Admin_AdminDashboard__WEBPACK_IMPORTED_MODULE_19__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_Admin_AdminDashboard__WEBPACK_IMPORTED_MODULE_19__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_24__.Route, {
           path: "/admin/ranchitos",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_Admin_AdminRanchitos__WEBPACK_IMPORTED_MODULE_20__["default"], {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_23__.Route, {
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_Admin_AdminRanchitos__WEBPACK_IMPORTED_MODULE_20__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_24__.Route, {
+          path: "/admin/usuarios",
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_Admin_AdminUsuarios__WEBPACK_IMPORTED_MODULE_21__["default"], {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_24__.Route, {
           path: "*",
-          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_NotFound__WEBPACK_IMPORTED_MODULE_7__["default"], {})]
+          element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_NotFound__WEBPACK_IMPORTED_MODULE_7__["default"], {})]
           })
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_21__.jsx)(_Footer__WEBPACK_IMPORTED_MODULE_4__["default"], {})]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_22__.jsx)(_Footer__WEBPACK_IMPORTED_MODULE_4__["default"], {})]
     })]
   });
 }
@@ -19533,7 +19693,6 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-//Librerias de react
 
 
 
@@ -20168,7 +20327,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "#email{\n\n}\n.register_form{\n    background-color: var(--fh_color);\n    border-radius: 1rem;\n    padding: 1rem;\n    width: 70%;\n    margin: 3rem auto;\n    display: flex;\n    flex-direction: column;\n    gap: 1.5rem;\n    justify-content: center;\n}\n.register_submit{\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.register_submit button{\n    padding: 1rem;\n    font-size: 2rem !important;\n    border-radius: 1rem;\n    color: white;\n}\n.register_campo{\n    display: grid;\n    gap: 0.3rem;\n    align-items: center;\n    grid-template-columns: 15% 85%;\n    justify-content: center;\n}\n.register_campo > svg{\n    align-self: center;\n    font-size: 3rem;\n    text-align: center;\n    color: white !important;\n}\n.register_campo label{\n    font-size: 2rem;\n    text-align: center;\n    color: white !important;\n}\n.register_campo input, .register_campo select{\n    font-size: 1.6rem;\n    outline: none;\n    width: 100%;\n    border: none;\n    border-radius: 1rem;\n    padding: 1rem;\n}\n\n.register_icon{\n    color: white;\n    font-size: 3rem;\n}\n.register_campo input:focus{\n    outline: none;\n}\n.register_campo_invalid {\n    border: 1px solid red !important;\n}\n.register_title{\n    margin-top: 1rem;\n    color: white;\n    text-align: center;\n    grid-row: 0 / span 2;\n    font-size: 4rem;\n}\n@media (min-width: 200px) {\n    .register_form{\n        width: 95%;\n    }\n}\n@media (min-width: 768px) {\n    .register_form{\n        width: 70%;\n    }\n}\n@media (min-width: 1000px) {\n    .register_form{\n        width: 50%;\n    }\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "#email{\n\n}\n.register_form{\n    background-color: var(--fh_color);\n    border-radius: 1rem;\n    padding: 2rem;\n    width: 70%;\n    margin: 3rem auto;\n    display: flex;\n    flex-direction: column;\n    gap: 2rem;\n    justify-content: center;\n}\n.register_submit{\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}\n.register_submit button{\n    padding: 1rem;\n    font-size: 2rem !important;\n    border-radius: 1rem;\n    color: white;\n}\n.register_campo{\n    display: grid;\n    gap: 1rem;\n    align-items: center;\n    grid-template-columns: 15% 85%;\n    justify-content: center;\n}\n.register_campo > svg{\n    align-self: center;\n    font-size: 3rem;\n    text-align: center;\n    color: white !important;\n}\n.register_campo label{\n    font-size: 2rem;\n    text-align: center;\n    color: white !important;\n}\n.register_campo input, .register_campo select{\n    font-size: 1.6rem;\n    outline: none;\n    width: 100%;\n    border: none;\n    border-radius: 1rem;\n    padding: 1rem;\n}\n\n.descripcion {\n    padding: 0.5rem 0.5rem 50% 0.5rem;\n    border-radius: 1rem;\n    font-size: 2rem !important;\n}\n.register_icon{\n    color: white;\n    font-size: 3rem;\n}\n.register_campo input:focus{\n    outline: none;\n}\n.register_campo_invalid {\n    border: 1px solid red !important;\n}\n.register_title{\n    margin-top: 1rem;\n    color: white;\n    text-align: center;\n    grid-row: 0 / span 2;\n    font-size: 4rem;\n}\n@media (min-width: 200px) {\n    .register_form{\n        width: 95%;\n    }\n}\n@media (min-width: 768px) {\n    .register_form{\n        width: 70%;\n    }\n}\n@media (min-width: 1000px) {\n    .register_form{\n        width: 50%;\n    }\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

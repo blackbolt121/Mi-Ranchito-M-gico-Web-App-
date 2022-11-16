@@ -23,6 +23,7 @@ import RecomendacionesGo from "./dashboard/RecomendacionesGo";
 import AdminLogin from "./Admin/AdminLogin";
 import AdminDashboard from "./Admin/AdminDashboard";
 import AdminRanchitos from "./Admin/AdminRanchitos";
+import AdminUsuarios from "./Admin/AdminUsuarios";
 
 function App() {
     return <>
@@ -57,6 +58,7 @@ function App() {
                 <Route path={"/admin"} element={<AdminLogin/>}/>
                 <Route path={"/admin/dashboard"} element={<AdminDashboard/>}/>
                 <Route path={"/admin/ranchitos"} element={<AdminRanchitos/>}/>
+                <Route path={"/admin/usuarios"} element={<AdminUsuarios/>}/>
                 <Route path={"*"} element={
                     <Fragment>
                         <Header/>

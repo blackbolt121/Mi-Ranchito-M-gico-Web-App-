@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import SelectEstadosMunicipios from "../SelectEstadosMunicipios";
 import network from "../network";
 import HeaderAdmin from "./HeaderAdmin";
@@ -8,6 +8,9 @@ export default function AdminRanchitos(prop){
     const [latitud, setLatitud] = useState(0);
     const [longitud, setLongitud] = useState(0);
     const [nombre, setNombre] = useState("")
+    const [descripcion, setDescripcion] = useState();
+    const [imagen, setImagen] = useState()
+    const [ranchitos, setRanchitos] = useState([])
     function onChange(event){
         let target_name = event.target.name
         let target_value = event.target.value
@@ -17,6 +20,10 @@ export default function AdminRanchitos(prop){
             setLongitud(target_value)
         }else if(target_name == "nombre"){
             setNombre(target_value)
+        }else if(target_name == "imagen"){
+            setImagen(target_value)
+        }else if(target_name == "descripcion"){
+            setDescripcion(target_value)
         }
     }
     function clearFormCiudad(){
@@ -25,20 +32,24 @@ export default function AdminRanchitos(prop){
         setLatitud(0)
         setLongitud(0)
         setNombre("")
+        setDescripcion("")
+        setImagen("")
     }
     function crearCiudad(event){
         event.preventDefault()
         //fetch(`http://${network.ip}`)
         console.log("Registrando Ciudad")
 
-        fetch(`http://${network.ip}/api/ciudades`,{
+        fetch(`http://${network.ip}/api/ranchito`,{
             method:"POST",
             "Content-Type":"application/json",
-            'Accept':'application/json',
+            accept:"application/json",
             body:JSON.stringify({
                 "nombre":nombre,
                 "estado":document.getElementById("estado").value,
                 "municipio":document.getElementById("municipios").value,
+                "descripcion":descripcion,
+                "imagen":imagen,
                 "latitud":latitud,
                 "longitud":longitud
             })
@@ -56,24 +67,17 @@ export default function AdminRanchitos(prop){
             alert.log(error.message)
             clearFormCiudad()
         })
-
-
-        //Limpiando el formulario
-
     }
-    function crearRanchito(event){
-        event.preventDefault();
 
-    }
     return <>
         <HeaderAdmin/>
         <form onSubmit={crearCiudad} className={"register_form"}>
-            <h1 style={{textAlign:"center",color:"white"}}>Registrar Estado</h1>
+            <h1 style={{textAlign:"center",color:"white"}}>Registrar Ranchito</h1>
             <div className={"register_campo"}>
                 <label htmlFor={"nombre"}>
                     Nombre
                 </label>
-                <input name={"nombre"} type={"text"} value={nombre} onChange={onChange}/>
+                <input name={"nombre"} type={"text"} value={nombre} onChange={onChange} placeholder={"Nombre del ranchito"}/>
             </div>
             <SelectEstadosMunicipios/>
             <div className={"register_campo"}>
@@ -84,12 +88,20 @@ export default function AdminRanchitos(prop){
                 <label htmlFor={"longitud"}>Longitud</label>
                 <input type={"number"} value={longitud} step={0.00001} name={"longitud"} onChange={onChange}/>
             </div>
+            <div className={"register_campo"}>
+                <label htmlFor={"imagen"}>Imagen</label>
+                <input name={"imagen"} type={"text"} value={imagen} onChange={onChange} placeholder={"Url de imagen"}/>
+            </div>
+            <div className={"register_campo"}>
+                <label htmlFor={"descripcion"}>Descripción</label>
+                <textarea className={"descripcion"} value={descripcion} name={"descripcion"} onChange={onChange}/>
+            </div>
             <div className={"register_submit"}>
                 <button type={"submit"} className={"btn btn-primary"}>Registrar</button>
             </div>
         </form>
-        <form>
-
-        </form>
+        <div>
+            {ranchitos}
+        </div>
     </>
 }

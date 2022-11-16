@@ -5,7 +5,6 @@ const AdminDashboard = (event) => {
 
 
     return <>
-
         <HeaderAdmin/>
         <div>
             <div className={"container_actions"}>

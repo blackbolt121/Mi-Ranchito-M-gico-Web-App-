@@ -31,3 +31,4 @@ Route::post("/visited",[VisitasController::class,"addVisited"])->middleware("val
 Route::get("/ciudades",[CiudadesController::class,"getCiudades"]);
 Route::post("/ciudades",[CiudadesController::class,"createCiudades"]);
 Route::delete("/ciudades/{id}",[CiudadesController::class,"deleteCiudad"]);
+Route::post("/ranchito",[RanchitoController::class,"createRanchito"]);
