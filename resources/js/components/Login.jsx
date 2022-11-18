@@ -6,7 +6,7 @@ import Header from "./Header";
 const email_re =   /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 export default function Login(){
 
-    const login = (event) => {
+    const Login = (event) => {
         event.preventDefault();
         if(
             email_re.test(document.getElementById("email").value)
@@ -28,11 +28,10 @@ export default function Login(){
                     })
                 }).then(response => {
                     if(response.status === 202) {
-                        let token = response.headers.get("x-token");
-                        if(token !== null){
-                            window.localStorage.setItem("x-token",token);
+                        response.json().then(response => {
+                            window.localStorage.setItem("x-token",response.token);
                             document.location.href = "/dashboard";
-                        }
+                        })
                     }else{
                         window.alert('Credenciales invalidas')
                     }
@@ -52,7 +51,7 @@ export default function Login(){
             {(localStorage.getItem("x-token")!==null)? <Navigate to={"/dashboard"}/>:null}
             <div className="login">
                 <h2>Iniciar sesión</h2>
-                <form onSubmit={(e) => login(e)}>
+                <form onSubmit={(e) => Login(e)}>
                     <div className="field">
                         <label
                             htmlFor="email"

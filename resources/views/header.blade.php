@@ -12,18 +12,18 @@
             </li>
             <li>
                 <a class="btn btn-primary button" href="
-                @if($path == "login")
+                @if($path == "adminLogin")
                     /register
                 @else
                     @if($path == "hassession")
                         /dashboard
                     @else
-                        /login
+                        /adminLogin
                     @endif
                 @endif
                 ">
                     @if($path)
-                        @if($path == "login")
+                        @if($path == "adminLogin")
                             Register
                         @else
                             @if($path == "hassession")

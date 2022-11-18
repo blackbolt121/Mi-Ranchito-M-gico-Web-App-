@@ -1,11 +1,11 @@
 @extends("template")
 @section("template_head")
-    <link href="{{asset("css/login.css")}}" rel="stylesheet"/>
+    <link href="{{asset("css/adminLogin.css")}}" rel="stylesheet"/>
 @endsection
 @section("content")
-    <div class="login">
+    <div class="adminLogin">
         <h2>Iniciar sesión</h2>
-        <form method="POST" action="/login">
+        <form method="POST" action="/adminLogin">
             @csrf
             @method("POST")
             <div class="field">

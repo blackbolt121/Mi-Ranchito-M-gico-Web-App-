@@ -1,0 +1,12 @@
+.menu_options{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+.menu_options button{
+    padding: 1rem;
+    font-size: 2rem;
+    border-radius: 0.5rem;
+
+}

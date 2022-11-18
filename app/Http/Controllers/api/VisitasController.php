@@ -60,7 +60,7 @@ class VisitasController extends Controller
                 ->where("id_user",$user->id_user)
                 ->where("visitado",false)
                 ->pluck("id_ranchito");
-            return Ranchito::query()->select("ranchitos.id","ciudades.nombre","ranchitos.imagen")->whereIn("ranchitos.id",$ranchitos)->join("ciudades","ciudades.id","ranchitos.id")->get()->all();
+            return Ranchito::query()->select("ranchitos.id","ciudades.nombre","ranchitos.imagen","ciudades.latitud","ciudades.longitud")->whereIn("ranchitos.id",$ranchitos)->join("ciudades","ciudades.id","ranchitos.id")->get()->all();
         }else{
             return response("",400);
         }

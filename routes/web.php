@@ -50,3 +50,16 @@ Route::get("/dashboard/recomendaciones/{id}", function (){
 Route::get("/go/{id}", function (){
     return view("index");
 });
+Route::get("/admin", function (){
+    return view("index");
+});
+Route::get("/admin/dashboard", function (){
+    return view("index");
+});
+
+Route::get("/admin/ranchitos", function (){
+    return view("index");
+});
+Route::get("/admin/usuarios", function (){
+    return view("index");
+});

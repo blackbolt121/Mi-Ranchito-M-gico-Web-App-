@@ -7,8 +7,9 @@ import "../css/Dashboard.css";
 const Dashboard = () => {
 
 
-    {(localStorage.getItem("x-token")===null)?<Navigate to={"/login"}/>:<></>}
+
     return <div>
+        {(localStorage.getItem("x-token") === null) ? <Navigate to={"/login"}/> : <></>}
         <Header routes={{"Rutas":"/dashboard/mapa","Visitar":"/dashboard/visitar","Recomendaciones":"/dashboard/recomendaciones"}} main={{"Cerrar Sesión":"/logout"}}/>
         <div className={"container_actions"}>
             <div className={"action_container"}>

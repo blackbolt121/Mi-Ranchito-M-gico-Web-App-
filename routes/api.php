@@ -4,6 +4,7 @@ use App\Http\Controllers\api\MunicipioController;
 use App\Http\Controllers\api\RanchitoController;
 use App\Http\Controllers\api\UserController;
 use App\Http\Controllers\api\VisitasController;
+use \App\Http\Controllers\api\CiudadesController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -27,3 +28,7 @@ Route::get("/ranchitos",[RanchitoController::class,"getRanchitosMagicos"]);
 Route::get("/ranchitos/{ranchito}",[RanchitoController::class,"getRanchitosMagicosById"]);
 Route::post("/visitas",[VisitasController::class,"getVisita"])->middleware("validtoken");
 Route::post("/visited",[VisitasController::class,"addVisited"])->middleware("validtoken")->middleware('ranchito');
+Route::get("/ciudades",[CiudadesController::class,"getCiudades"]);
+Route::post("/ciudades",[CiudadesController::class,"createCiudades"]);
+Route::delete("/ciudades/{id}",[CiudadesController::class,"deleteCiudad"]);
+Route::post("/ranchito",[RanchitoController::class,"createRanchito"]);

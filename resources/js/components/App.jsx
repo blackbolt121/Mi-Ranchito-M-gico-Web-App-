@@ -20,6 +20,10 @@ import Visitar from "./dashboard/Visitar";
 import VisitarGo from "./dashboard/VisitarGo";
 import Go from "./Go";
 import RecomendacionesGo from "./dashboard/RecomendacionesGo";
+import AdminLogin from "./Admin/AdminLogin";
+import AdminDashboard from "./Admin/AdminDashboard";
+import AdminRanchitos from "./Admin/AdminRanchitos";
+import AdminUsuarios from "./Admin/AdminUsuarios";
 
 function App() {
     return <>
@@ -51,6 +55,10 @@ function App() {
                 <Route path={"/dashboard/visitar/:id"} element={<VisitarGo/>}/>
                 <Route path={"/dashboard/recomendaciones"} element={<Recomendaciones/>}/>
                 <Route path={"/dashboard/recomendaciones/:id"} element={<RecomendacionesGo/>}/>
+                <Route path={"/admin"} element={<AdminLogin/>}/>
+                <Route path={"/admin/dashboard"} element={<AdminDashboard/>}/>
+                <Route path={"/admin/ranchitos"} element={<AdminRanchitos/>}/>
+                <Route path={"/admin/usuarios"} element={<AdminUsuarios/>}/>
                 <Route path={"*"} element={
                     <Fragment>
                         <Header/>
