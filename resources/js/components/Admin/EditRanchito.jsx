@@ -83,8 +83,43 @@ export default function EditRanchito(props) {
     }
     function submitChanges(event){
         event.preventDefault()
-    }
 
+        let ranchito_id = document.getElementById("edit_ranchito").value
+        let estado = document.getElementById("estado").value
+        let municipio = document.getElementById("municipios").value
+        let info = {
+            "id":ranchito_id,
+            "nombre":nombre,
+            "id_estado":estado,
+            "id_municipio":municipio,
+            "latitud":latitud,
+            "longitud":longitud,
+            "descripcion":descripcion,
+            "imagen":imagen
+        }
+        info = JSON.stringify(info)
+        fetch(`http://${network.ip}/api/ranchito/edit`,{
+            "method":"POST",
+            "Content-Type":"application/json",
+            "accept":"application/json",
+            "body":info
+        }).then(response => {
+            if (response.ok && response.status === 200){
+                return response.json()
+            }
+        })
+            .then(response => {
+                alert("Ranchito actualizado con exito!!!!")
+                clearForm()
+                fetch(`http://${network.ip}/api/ranchitos`)
+                        .then(response => response.json())
+                        .then(response => {
+                            setRanchitos(response)
+                        })
+            })
+            .catch(error => console.log(error))
+
+    }
     return <>
         <form className={"register_form"} onSubmit={submitChanges}>
             <h1 className={"register_title"}>Editar Ranchito</h1>
@@ -92,7 +127,7 @@ export default function EditRanchito(props) {
                 <label htmlFor={"edit_ranchito"}>Seleciona un ranchito</label>
                 <select id={"edit_ranchito"} name={"edit_ranchito"} onChange={editRanchito}>
                     <option value={0}>Sin seleccionar</option>
-                    {ranchitos.map( x => <option value={x.id}>{x.ciudad}</option>)}
+                    {ranchitos.map( x => <option key={x.id} value={x.id}>{x.ciudad}</option>)}
                 </select>
             </div>
             <div className={"register_campo"}>

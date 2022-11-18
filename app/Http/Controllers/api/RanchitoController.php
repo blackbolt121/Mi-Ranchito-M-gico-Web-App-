@@ -59,4 +59,23 @@ class RanchitoController extends Controller
 
 
     }
+    public function updateRanchitoMagico(Request $request){
+        $req = json_decode($request->getContent());
+        try{
+            $ciudad = Ciudad::query()->where("id","=",$req->id)->get()[0];
+            $ciudad->id_municipio = $req->id_municipio;
+            $ciudad->id_estado = $req->id_estado;
+            $ciudad->nombre = $req->nombre;
+            $ciudad->latitud = $req->latitud;
+            $ciudad->longitud = $req->longitud;
+            $ciudad->save();
+            $ranchito = Ranchito::query()->where("id","=",$req->id)->get()[0];
+            $ranchito->imagen = $req->imagen;
+            $ranchito->descripcion = $req->descripcion;
+            $ranchito->save();
+            return response("{}",200);
+        }catch (\Exception $exception){
+            echo $exception->getMessage();
+        }
+    }
 }

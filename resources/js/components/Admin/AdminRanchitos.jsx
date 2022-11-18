@@ -11,7 +11,7 @@ import EditRanchito from "./EditRanchito";
 export default function AdminRanchitos(prop){
 
 
-    const [interfaz, setUI] = useState(<CreateRanchito/>)
+    const [interfaz, setUI] = useState(<EditRanchito/>)
 
     function crearRanchito(event){
         event.preventDefault()
