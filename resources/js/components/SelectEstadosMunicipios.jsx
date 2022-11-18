@@ -5,7 +5,7 @@ import estados from "./EstadosInfo";
 
 
 const SelectEstadosMunicipios= (props) => {
-    let [municipios,setMunicipios] = useState();
+    let [municipios,setMunicipios] = useState(props.municipios);
     function changeState(e){
         let id_estado = parseInt(document.getElementById("estado").value);
         if(id_estado > 0 && id_estado < 33){
@@ -38,6 +38,7 @@ const SelectEstadosMunicipios= (props) => {
 SelectEstadosMunicipios.defaultProps = {
     handler: ()=>{
 
-    }
+    },
+    municipios:[]
 }
 export default SelectEstadosMunicipios;

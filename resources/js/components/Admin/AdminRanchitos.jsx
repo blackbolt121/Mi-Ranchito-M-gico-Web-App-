@@ -1,107 +1,33 @@
-import React, {useEffect, useState} from "react";
-import SelectEstadosMunicipios from "../SelectEstadosMunicipios";
-import network from "../network";
+import React, {useState} from "react";
 import HeaderAdmin from "./HeaderAdmin";
+
+
+//Styles
+
+import "./css/AdminRanchitos.css"
+import CreateRanchito from "./CreateRanchito";
+import EditRanchito from "./EditRanchito";
 
 export default function AdminRanchitos(prop){
 
-    const [latitud, setLatitud] = useState(0);
-    const [longitud, setLongitud] = useState(0);
-    const [nombre, setNombre] = useState("")
-    const [descripcion, setDescripcion] = useState();
-    const [imagen, setImagen] = useState()
-    const [ranchitos, setRanchitos] = useState([])
-    function onChange(event){
-        let target_name = event.target.name
-        let target_value = event.target.value
-        if(target_name == "latitud"){
-            setLatitud(target_value)
-        }else if(target_name == "longitud"){
-            setLongitud(target_value)
-        }else if(target_name == "nombre"){
-            setNombre(target_value)
-        }else if(target_name == "imagen"){
-            setImagen(target_value)
-        }else if(target_name == "descripcion"){
-            setDescripcion(target_value)
-        }
-    }
-    function clearFormCiudad(){
-        document.getElementById("estado").value = 0;
-        document.getElementById("municipios").value=0;
-        setLatitud(0)
-        setLongitud(0)
-        setNombre("")
-        setDescripcion("")
-        setImagen("")
-    }
-    function crearCiudad(event){
+
+    const [interfaz, setUI] = useState(<CreateRanchito/>)
+
+    function crearRanchito(event){
         event.preventDefault()
-        //fetch(`http://${network.ip}`)
-        console.log("Registrando Ciudad")
-
-        fetch(`http://${network.ip}/api/ranchito`,{
-            method:"POST",
-            "Content-Type":"application/json",
-            accept:"application/json",
-            body:JSON.stringify({
-                "nombre":nombre,
-                "estado":document.getElementById("estado").value,
-                "municipio":document.getElementById("municipios").value,
-                "descripcion":descripcion,
-                "imagen":imagen,
-                "latitud":latitud,
-                "longitud":longitud
-            })
-        }).then(response => {
-            if(response.status == 200){
-                clearFormCiudad()
-                alert("Ciudad registrada con exito")
-            }else{
-                clearFormCiudad()
-                response.text().then( text => {
-                    console.log(text)
-                })
-            }
-        }).catch( error => {
-            alert.log(error.message)
-            clearFormCiudad()
-        })
+        setUI(<CreateRanchito/>)
     }
-
+    function editarRanchito(event){
+        event.preventDefault()
+        setUI(<EditRanchito/>)
+    }
     return <>
         <HeaderAdmin/>
-        <form onSubmit={crearCiudad} className={"register_form"}>
-            <h1 style={{textAlign:"center",color:"white"}}>Registrar Ranchito</h1>
-            <div className={"register_campo"}>
-                <label htmlFor={"nombre"}>
-                    Nombre
-                </label>
-                <input name={"nombre"} type={"text"} value={nombre} onChange={onChange} placeholder={"Nombre del ranchito"}/>
-            </div>
-            <SelectEstadosMunicipios/>
-            <div className={"register_campo"}>
-                <label htmlFor={"latitud"}>Latitud</label>
-                <input type={"number"} value={latitud} step={0.00001} name={"latitud"} onChange={onChange}/>
-            </div>
-            <div className={"register_campo"}>
-                <label htmlFor={"longitud"}>Longitud</label>
-                <input type={"number"} value={longitud} step={0.00001} name={"longitud"} onChange={onChange}/>
-            </div>
-            <div className={"register_campo"}>
-                <label htmlFor={"imagen"}>Imagen</label>
-                <input name={"imagen"} type={"text"} value={imagen} onChange={onChange} placeholder={"Url de imagen"}/>
-            </div>
-            <div className={"register_campo"}>
-                <label htmlFor={"descripcion"}>Descripción</label>
-                <textarea className={"descripcion"} value={descripcion} name={"descripcion"} onChange={onChange}/>
-            </div>
-            <div className={"register_submit"}>
-                <button type={"submit"} className={"btn btn-primary"}>Registrar</button>
-            </div>
-        </form>
-        <div>
-            {ranchitos}
+        <div className={"container menu_options"}>
+            <button name={"crear-ranchito-btn"} type={"submit"} className={"btn btn-primary"} style={{marginRight:"10px"}} onClick={crearRanchito}>Crear Ranchito</button>
+            <button name={"editar_ranchito_btn"} type={"submit"} className={"btn btn-primary"} onClick={editarRanchito}>Editar Ranchito</button>
         </div>
+        {interfaz}
     </>
+
 }

@@ -15,7 +15,7 @@ class RanchitoController extends Controller
             return response(Ranchito::query()
                 ->join("ciudades","ciudades.id","ranchitos.id")
                 ->join("estados","estados.id","ciudades.id_estado")
-                ->select("ranchitos.id","ciudades.nombre as ciudad","estados.nombre as estado","ranchitos.descripcion","ranchitos.imagen","ciudades.latitud","ciudades.longitud")
+                ->select("ranchitos.id","ciudades.nombre as ciudad","estados.nombre as estado","ciudades.id_estado as id_estado","ciudades.id_municipio as id_municipio","ranchitos.descripcion","ranchitos.imagen","ciudades.latitud","ciudades.longitud")
                 ->get()
                 ->all(),200);
         }catch(\Exception $e){

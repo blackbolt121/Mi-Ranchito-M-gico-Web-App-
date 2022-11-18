@@ -61,7 +61,7 @@ const Mapa = () => {
                     <form onSubmit={visited}>
                         <button className={"btn btn-primary"}>Visitado</button>
                     </form>
-                    <a href={"https://www.google.com"}>Ir</a>
+                    <a target={"_blank"} href={`https://maps.google.com/?q=${props.latitud},${props.longitud}`}>Ir</a>
                 </div>
             </div>
 
@@ -90,7 +90,7 @@ const Mapa = () => {
             })
             .then(resopnse => {
                 setRanchitos(resopnse.map(ranchito => {
-                    return <ListRutas img={ranchito.imagen} nombre={ranchito.nombre} id={ranchito.id}/>
+                    return <ListRutas img={ranchito.imagen} nombre={ranchito.nombre} id={ranchito.id} latitud={ranchito.latitud} longitud={ranchito.longitud}/>
                 }))
             })
             .catch(error => console.log(error.message));
