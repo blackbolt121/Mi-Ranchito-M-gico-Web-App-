@@ -33,3 +33,4 @@ Route::post("/ciudades",[CiudadesController::class,"createCiudades"]);
 Route::delete("/ciudades/{id}",[CiudadesController::class,"deleteCiudad"]);
 Route::post("/ranchito",[RanchitoController::class,"createRanchito"]);
 Route::post("/ranchito/edit",[RanchitoController::class,"updateRanchitoMagico"]);
+Route::get("/admin/users",[UserController::class,"getUsersTravel"]);

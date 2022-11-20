@@ -9,6 +9,9 @@ use Illuminate\Database\QueryException;
 class Ranchito extends Model
 {
     use HasFactory;
+    public function Actividades(){
+        $this->belongsTo(\App\Models\Actividades::class,"ranchito","id");
+    }
     public static function createRanchito(int $id, string $url,string $descripcion){
         $ranchito = new Ranchito;
         $ranchito->id = $id;

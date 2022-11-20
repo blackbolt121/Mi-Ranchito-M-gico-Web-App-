@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\api;
 
+use App\Models\Ranchito;
 use App\Models\User;
+use App\Models\Visita;
 use Illuminate\Http\Request;
 use Exception;
 
@@ -58,6 +60,9 @@ class UserController extends Controller
         }else{
             return $status;
         }
-
+    }
+    function getUsersTravel(Request $request){
+        $results = Visita::query()->select("users.nombre","users.email","visitas.id as id_visita","visitas.id_user","visitas.id_ranchito","ciudades.nombre as nombre_ciudad","visitas.visitado")->where("visitas.visitado","=",1)->join("users","users.id","visitas.id_user")->join("ranchitos","ranchitos.id","visitas.id_ranchito")->join("ciudades","ciudades.id","visitas.id_ranchito");
+        return $results->get()->all();
     }
 }

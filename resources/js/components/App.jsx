@@ -24,6 +24,7 @@ import AdminLogin from "./Admin/AdminLogin";
 import AdminDashboard from "./Admin/AdminDashboard";
 import AdminRanchitos from "./Admin/AdminRanchitos";
 import AdminUsuarios from "./Admin/AdminUsuarios";
+import ToDo from "./ToDo";
 
 function App() {
     return <>
@@ -55,6 +56,7 @@ function App() {
                 <Route path={"/dashboard/visitar/:id"} element={<VisitarGo/>}/>
                 <Route path={"/dashboard/recomendaciones"} element={<Recomendaciones/>}/>
                 <Route path={"/dashboard/recomendaciones/:id"} element={<RecomendacionesGo/>}/>
+                <Route path={"/todo"} element={<ToDo/>}/>
                 <Route path={"/admin"} element={<AdminLogin/>}/>
                 <Route path={"/admin/dashboard"} element={<AdminDashboard/>}/>
                 <Route path={"/admin/ranchitos"} element={<AdminRanchitos/>}/>

@@ -20,6 +20,9 @@ class User extends Model
     {
         $this->hasMany(\App\Models\session::class, "id_user");
     }
+    public function Administrador(){
+        $this->belongsTo(\App\Models\Administrador::class,"id","id");
+    }
 
     public static function createUser(
         string $nombre,

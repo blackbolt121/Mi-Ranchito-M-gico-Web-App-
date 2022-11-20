@@ -1,0 +1,35 @@
+.card_container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+.card_container .card{
+    width: 30%;
+}
+@media (max-width: 800px) {
+    .card_container .card{
+        width: 80%;
+    }
+}
+.card_icon_color{
+    color: red;
+    font-size: 3rem;
+}
+.card-title2{
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: bolder;
+}
+.card_container a {
+    font-size: 2rem;
+    text-align: center;
+}
+.card p{
+    font-size: 2rem;
+    font-style: italic;
+}
