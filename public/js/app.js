@@ -13651,7 +13651,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _css_AdminRanchitos_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./css/AdminRanchitos.css */ "./resources/js/components/Admin/css/AdminRanchitos.css");
 /* harmony import */ var _CreateRanchito__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CreateRanchito */ "./resources/js/components/Admin/CreateRanchito.jsx");
 /* harmony import */ var _EditRanchito__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./EditRanchito */ "./resources/js/components/Admin/EditRanchito.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _CreateActividad__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CreateActividad */ "./resources/js/components/Admin/CreateActividad.jsx");
+/* harmony import */ var _EditActividad__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./EditActividad */ "./resources/js/components/Admin/EditActividad.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -13669,23 +13671,33 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
 function AdminRanchitos(prop) {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_EditRanchito__WEBPACK_IMPORTED_MODULE_4__["default"], {})),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_EditRanchito__WEBPACK_IMPORTED_MODULE_4__["default"], {})),
     _useState2 = _slicedToArray(_useState, 2),
     interfaz = _useState2[0],
     setUI = _useState2[1];
   function crearRanchito(event) {
     event.preventDefault();
-    setUI( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_CreateRanchito__WEBPACK_IMPORTED_MODULE_3__["default"], {}));
+    setUI( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_CreateRanchito__WEBPACK_IMPORTED_MODULE_3__["default"], {}));
   }
   function editarRanchito(event) {
     event.preventDefault();
-    setUI( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_EditRanchito__WEBPACK_IMPORTED_MODULE_4__["default"], {}));
+    setUI( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_EditRanchito__WEBPACK_IMPORTED_MODULE_4__["default"], {}));
   }
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_HeaderAdmin__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+  function crearActividad(event) {
+    event.preventDefault();
+    setUI( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_CreateActividad__WEBPACK_IMPORTED_MODULE_5__["default"], {}));
+  }
+  function editarActividad(event) {
+    event.preventDefault();
+    setUI( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_EditActividad__WEBPACK_IMPORTED_MODULE_6__["default"], {}));
+  }
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_HeaderAdmin__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
       className: "container menu_options",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
         name: "crear-ranchito-btn",
         type: "submit",
         className: "btn btn-primary",
@@ -13694,12 +13706,24 @@ function AdminRanchitos(prop) {
         },
         onClick: crearRanchito,
         children: "Crear Ranchito"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
         name: "editar_ranchito_btn",
         type: "submit",
         className: "btn btn-primary",
         onClick: editarRanchito,
         children: "Editar Ranchito"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+        name: "editar_ranchito_btn",
+        type: "submit",
+        className: "btn btn-primary",
+        onClick: crearActividad,
+        children: "Crear Atracci\xF3n"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
+        name: "editar_ranchito_btn",
+        type: "submit",
+        className: "btn btn-primary",
+        onClick: editarActividad,
+        children: "Editar Atraccion"
       })]
     }), interfaz]
   });
@@ -13731,6 +13755,247 @@ var AdminUsuarios = function AdminUsuarios(props) {
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AdminUsuarios);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/CreateActividad.jsx":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/Admin/CreateActividad.jsx ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _network__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../network */ "./resources/js/components/network.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+var CreateActividad = function CreateActividad(props) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState2 = _slicedToArray(_useState, 2),
+    nombre = _useState2[0],
+    setNombre = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState4 = _slicedToArray(_useState3, 2),
+    ranchito = _useState4[0],
+    setRanchito = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState6 = _slicedToArray(_useState5, 2),
+    tipoActividad = _useState6[0],
+    setTipoActividad = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState8 = _slicedToArray(_useState7, 2),
+    latitud = _useState8[0],
+    setLatitud = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState10 = _slicedToArray(_useState9, 2),
+    longitud = _useState10[0],
+    setLongitud = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState12 = _slicedToArray(_useState11, 2),
+    telefono = _useState12[0],
+    setTelefono = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState14 = _slicedToArray(_useState13, 2),
+    descripcion = _useState14[0],
+    setDescripcion = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState16 = _slicedToArray(_useState15, 2),
+    ranchitos = _useState16[0],
+    setRanchitos = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState18 = _slicedToArray(_useState17, 2),
+    actividades = _useState18[0],
+    setActividades = _useState18[1];
+  function onChange(event) {
+    event.preventDefault();
+    var value = event.target.value;
+    var target = event.target.name;
+    var functions = [setRanchito, setTipoActividad, setNombre, setLatitud, setLongitud, setTelefono, setDescripcion];
+    var names = ["ranchito", "tipo", "nombre", "latitud", "longitud", "telefono", "descripcion"];
+    for (var i = 0; i < names.length; i++) {
+      if (names[i] == target) {
+        functions[i](value);
+      }
+    }
+  }
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetch("http://".concat(_network__WEBPACK_IMPORTED_MODULE_1__["default"].ip, "/api/ranchitos")).then(function (response) {
+      return response.json();
+    }).then(function (response) {
+      setRanchitos(response.map(function (ranchito) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+          value: ranchito.id,
+          children: ranchito.ciudad
+        }, ranchito.id);
+      }));
+    });
+    fetch("http://".concat(_network__WEBPACK_IMPORTED_MODULE_1__["default"].ip, "/api/tipo_actividades")).then(function (response) {
+      return response.json();
+    }).then(function (response) {
+      setActividades(response.map(function (actividad) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+          value: actividad.id,
+          children: actividad.categoria
+        }, actividad.id);
+      }));
+    });
+  }, []);
+  function limpiarFormulario() {
+    setNombre("");
+    setDescripcion("");
+    setLatitud(0);
+    setLongitud(0);
+    setTelefono("");
+    setRanchito(0);
+    setTipoActividad(0);
+  }
+  function crearActividad(event) {
+    event.preventDefault();
+    fetch("http://".concat(_network__WEBPACK_IMPORTED_MODULE_1__["default"].ip, "/api/actividad"), {
+      method: "POST",
+      "Content-Type": "application/json",
+      accept: "application/json",
+      body: JSON.stringify({
+        "nombre": nombre,
+        "ranchito": ranchito,
+        "tipo": tipoActividad,
+        "latitud": latitud,
+        "longitud": longitud,
+        "telefono": telefono,
+        "descripcion": descripcion
+      })
+    }).then(function (response) {
+      if (response.ok && response.status === 200) {
+        alert("Se ha creado la actividad con exito!!!");
+        limpiarFormulario();
+      } else {
+        throw new Error("Fallo en registrar actividad");
+      }
+    })["catch"](function (error) {
+      alert(error.message);
+      limpiarFormulario();
+    });
+  }
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
+      onSubmit: crearActividad,
+      className: "register_form",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
+        className: "register_title",
+        children: "Registrar Actividad"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "register_campo",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+          htmlFor: "ranchito",
+          children: "Ranchito"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
+          name: "ranchito",
+          onChange: onChange,
+          value: ranchito,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            value: 0,
+            children: "Sin seleccionar"
+          }, 0), ranchitos]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "register_campo",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+          htmlFor: "tipo",
+          children: "Categoria"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
+          name: "tipo",
+          onChange: onChange,
+          value: tipoActividad,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            value: 0,
+            children: "Sin seleccionar"
+          }, 0), actividades]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "register_campo",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+          htmlFor: "nombre",
+          children: "Nombre"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+          name: "nombre",
+          type: "text",
+          value: nombre,
+          onChange: onChange,
+          placeholder: "Nombre del ranchito"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "register_campo",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+          htmlFor: "latitud",
+          children: "Latitud"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+          type: "number",
+          value: latitud,
+          step: 0.00001,
+          name: "latitud",
+          onChange: onChange
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "register_campo",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+          htmlFor: "longitud",
+          children: "Longitud"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+          type: "number",
+          value: longitud,
+          step: 0.00001,
+          name: "longitud",
+          onChange: onChange
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "register_campo",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+          htmlFor: "telefono",
+          children: "Telefono"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+          name: "telefono",
+          type: "text",
+          value: telefono,
+          onChange: onChange,
+          placeholder: "Telefono"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "register_campo",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+          htmlFor: "descripcion",
+          children: "Descripci\xF3n"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("textarea", {
+          className: "descripcion",
+          value: descripcion,
+          name: "descripcion",
+          onChange: onChange
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "register_submit",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          type: "submit",
+          className: "btn btn-primary",
+          children: "Registrar"
+        })
+      })]
+    })
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CreateActividad);
 
 /***/ }),
 
@@ -13972,6 +14237,328 @@ var CreateRanchito = function CreateRanchito(props) {
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CreateRanchito);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/EditActividad.jsx":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/Admin/EditActividad.jsx ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _network__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../network */ "./resources/js/components/network.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+var EditActividad = function EditActividad(props) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState2 = _slicedToArray(_useState, 2),
+    actividadesList = _useState2[0],
+    setActividadesList = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState4 = _slicedToArray(_useState3, 2),
+    nombre = _useState4[0],
+    setNombre = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+    _useState6 = _slicedToArray(_useState5, 2),
+    showCategorias = _useState6[0],
+    setShowCategorias = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState8 = _slicedToArray(_useState7, 2),
+    ranchito = _useState8[0],
+    setRanchito = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState10 = _slicedToArray(_useState9, 2),
+    tipoActividad = _useState10[0],
+    setTipoActividad = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState12 = _slicedToArray(_useState11, 2),
+    actividad = _useState12[0],
+    setActividad = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState14 = _slicedToArray(_useState13, 2),
+    latitud = _useState14[0],
+    setLatitud = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState16 = _slicedToArray(_useState15, 2),
+    longitud = _useState16[0],
+    setLongitud = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState18 = _slicedToArray(_useState17, 2),
+    telefono = _useState18[0],
+    setTelefono = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState20 = _slicedToArray(_useState19, 2),
+    descripcion = _useState20[0],
+    setDescripcion = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState22 = _slicedToArray(_useState21, 2),
+    ranchitos = _useState22[0],
+    setRanchitos = _useState22[1];
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState24 = _slicedToArray(_useState23, 2),
+    actividades = _useState24[0],
+    setActividades = _useState24[1];
+  function onChange(event) {
+    event.preventDefault();
+    var value = event.target.value;
+    var target = event.target.name;
+    var functions = [setRanchito, setTipoActividad, setNombre, setLatitud, setLongitud, setTelefono, setDescripcion];
+    var names = ["ranchito", "tipo", "nombre", "latitud", "longitud", "telefono", "descripcion"];
+    for (var i = 0; i < names.length; i++) {
+      if (names[i] == target) {
+        functions[i](value);
+      }
+    }
+  }
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetch("http://".concat(_network__WEBPACK_IMPORTED_MODULE_1__["default"].ip, "/api/ranchitos")).then(function (response) {
+      return response.json();
+    }).then(function (response) {
+      setRanchitos(response.map(function (ranchito) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+          value: ranchito.id,
+          children: ranchito.ciudad
+        }, ranchito.id);
+      }));
+    });
+  }, []);
+  function limpiarFormulario() {
+    setNombre("");
+    setDescripcion("");
+    setLatitud(0);
+    setLongitud(0);
+    setTelefono("");
+    setRanchito(0);
+    setActividad(0);
+    setTipoActividad(0);
+    setActividadesList([]);
+    setActividades([]);
+  }
+  function editarActividad(event) {
+    event.preventDefault();
+    console.log({
+      "nombre": nombre,
+      "ranchito": ranchito,
+      "actividad": actividad,
+      "tipo": tipoActividad,
+      "latitud": latitud,
+      "longitud": longitud,
+      "telefono": telefono,
+      "descripcion": descripcion
+    });
+    fetch("http://".concat(_network__WEBPACK_IMPORTED_MODULE_1__["default"].ip, "/api/actividad"), {
+      method: "PUT",
+      "Content-Type": "application/json",
+      accept: "application/json",
+      body: JSON.stringify({
+        "nombre": nombre,
+        "ranchito": ranchito,
+        "actividad": actividad,
+        "tipo": tipoActividad,
+        "latitud": latitud,
+        "longitud": longitud,
+        "telefono": telefono,
+        "descripcion": descripcion
+      })
+    }).then(function (response) {
+      if (response.ok && response.status === 200) {
+        alert("El ranchito ha sido actualizado");
+      } else {
+        throw new Error("Fallo en registrar actividad");
+      }
+    })["catch"](function (error) {
+      alert(error.message);
+    });
+    limpiarFormulario();
+  }
+  function onChangeRanchito(event) {
+    var id = event.target.value;
+    setRanchito(id);
+    if (id != 0) {
+      fetch("http://".concat(_network__WEBPACK_IMPORTED_MODULE_1__["default"].ip, "/api/actividad/").concat(id)).then(function (response) {
+        return response.json();
+      }).then(function (response) {
+        setActividadesList(response);
+        if (response.length > 0) setActividades(response.map(function (actividad) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            value: actividad.id,
+            children: actividad.nombre
+          }, actividad.id);
+        }));else {
+          setRanchito(0);
+          alert("El ranchito seleccionado no cuenta con actividades disponibles");
+        }
+      });
+    } else {
+      limpiarFormulario();
+    }
+  }
+  function onChangeActividad(event) {
+    var id_actividad = event.target.value;
+    var selected_activity = actividadesList.filter(function (x) {
+      return x.id == id_actividad;
+    })[0];
+    setActividad(selected_activity.id);
+    setNombre(selected_activity.nombre);
+    setLatitud(selected_activity.latitud);
+    setLongitud(selected_activity.longitud);
+    setTelefono(selected_activity.telefono);
+    fetch("http://".concat(_network__WEBPACK_IMPORTED_MODULE_1__["default"].ip, "/api/tipo_actividades")).then(function (response) {
+      return response.json();
+    }).then(function (response) {
+      setShowCategorias(response.map(function (actividad) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+          value: actividad.id,
+          children: actividad.categoria
+        }, actividad.id);
+      }));
+    });
+    setTimeout(function () {
+      setTipoActividad(selected_activity.tipo);
+    }, 10);
+    setDescripcion(selected_activity.descripcion);
+  }
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
+      onSubmit: editarActividad,
+      className: "register_form",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h1", {
+        className: "register_title",
+        children: "Editar Actividad"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "register_campo",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+          htmlFor: "ranchito",
+          children: "Ranchito"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
+          name: "ranchito",
+          onChange: onChangeRanchito,
+          value: ranchito,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            value: 0,
+            children: "Sin seleccionar"
+          }, 0), ranchitos]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "register_campo",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+          htmlFor: "tipo",
+          children: "Actividad"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
+          name: "tipo",
+          onChange: onChangeActividad,
+          value: actividad,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            value: 0,
+            children: "Sin seleccionar"
+          }, 0), actividades]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "register_campo",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+          htmlFor: "categoria",
+          children: "Categoria"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
+          name: "categoria",
+          id: "categoria",
+          onChange: onChange,
+          value: tipoActividad,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            value: 0,
+            children: "Sin seleccionar"
+          }, 0), showCategorias]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "register_campo",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+          htmlFor: "nombre",
+          children: "Nombre"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+          name: "nombre",
+          type: "text",
+          value: nombre,
+          onChange: onChange,
+          placeholder: "Nombre del ranchito"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "register_campo",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+          htmlFor: "latitud",
+          children: "Latitud"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+          type: "number",
+          value: latitud,
+          step: 0.00001,
+          name: "latitud",
+          onChange: onChange
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "register_campo",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+          htmlFor: "longitud",
+          children: "Longitud"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+          type: "number",
+          value: longitud,
+          step: 0.00001,
+          name: "longitud",
+          onChange: onChange
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "register_campo",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+          htmlFor: "telefono",
+          children: "Telefono"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+          name: "telefono",
+          type: "text",
+          value: telefono,
+          onChange: onChange,
+          placeholder: "Telefono"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "register_campo",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+          htmlFor: "descripcion",
+          children: "Descripci\xF3n"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("textarea", {
+          className: "descripcion",
+          value: descripcion,
+          name: "descripcion",
+          onChange: onChange
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "register_submit menu_options",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          className: "btn btn-primary",
+          onClick: limpiarFormulario,
+          children: "Limpiar"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          type: "submit",
+          className: "btn btn-primary",
+          children: "Editar"
+        })]
+      })]
+    })
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EditActividad);
 
 /***/ }),
 
@@ -14277,7 +14864,7 @@ function EditRanchito(props) {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             type: "submit",
             className: "btn btn-primary",
-            children: "Registrar"
+            children: "Modificar"
           })]
         })
       })]
@@ -14355,7 +14942,7 @@ var HeaderAdmin = function HeaderAdmin(props) {
         className: "navbar",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, {
           onClick: click2,
-          to: localStorage.getItem("x-token") === null ? "/" : "/dashboard",
+          to: localStorage.getItem("x-token") === null ? "/" : "/admin/dashboard",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
             className: "navbar-img",
             src: _images_logo_png__WEBPACK_IMPORTED_MODULE_1__["default"],
@@ -24066,7 +24653,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".menu_options{\n    margin-top: 1rem;\n    display: flex;\n    justify-content: center;\n    gap: 1rem;\n}\n.menu_options button{\n    padding: 1rem;\n    font-size: 2rem;\n    border-radius: 0.5rem;\n\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".menu_options{\n    padding: 1rem;\n    background-color: var(--fh_color);\n    margin-top: 1rem;\n    display: flex;\n    justify-content: center;\n    gap: 1rem;\n    flex-wrap: wrap;\n}\n.menu_options button{\n    padding: 1rem;\n    font-size: 2rem;\n    border-radius: 0.5rem;\n\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

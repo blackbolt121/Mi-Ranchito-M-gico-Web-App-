@@ -172,7 +172,7 @@ export default function EditRanchito(props) {
             <div className={"register_submit"}>
                 <div className={"container menu_options"}>
                     <button className={"btn btn-primary"} onClick={clearForm}>Limpiar</button>
-                    <button type={"submit"} className={"btn btn-primary"}>Registrar</button>
+                    <button type={"submit"} className={"btn btn-primary"}>Modificar</button>
                 </div>
             </div>
 

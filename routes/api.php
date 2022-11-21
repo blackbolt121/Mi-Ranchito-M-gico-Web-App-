@@ -5,6 +5,7 @@ use App\Http\Controllers\api\RanchitoController;
 use App\Http\Controllers\api\UserController;
 use App\Http\Controllers\api\VisitasController;
 use \App\Http\Controllers\api\CiudadesController;
+use App\Http\Controllers\api\ActividadesController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -34,3 +35,7 @@ Route::delete("/ciudades/{id}",[CiudadesController::class,"deleteCiudad"]);
 Route::post("/ranchito",[RanchitoController::class,"createRanchito"]);
 Route::post("/ranchito/edit",[RanchitoController::class,"updateRanchitoMagico"]);
 Route::get("/admin/users",[UserController::class,"getUsersTravel"]);
+Route::get("/tipo_actividades",[ActividadesController::class,"getTipoActividades"]);
+Route::post("/actividad",[ActividadesController::class,"crearActividad"]);
+Route::put("/actividad",[ActividadesController::class,"editarActividad"]);
+Route::get("/actividad/{id}",[ActividadesController::class,"obtenerActividad"]);

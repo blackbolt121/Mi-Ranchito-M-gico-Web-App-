@@ -1,8 +1,11 @@
 .menu_options{
+    padding: 1rem;
+    background-color: var(--fh_color);
     margin-top: 1rem;
     display: flex;
     justify-content: center;
     gap: 1rem;
+    flex-wrap: wrap;
 }
 .menu_options button{
     padding: 1rem;

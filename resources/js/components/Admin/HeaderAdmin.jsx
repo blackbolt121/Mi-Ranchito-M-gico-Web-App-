@@ -21,7 +21,7 @@ const HeaderAdmin = (props)=>{
         <header>
             <a onClick={click}><i id={"menu"} className="fa-solid fa-bars"></i></a>
             <nav className="navbar">
-                <Link onClick={click2} to={(localStorage.getItem("x-token")===null)?"/":"/dashboard"}><img
+                <Link onClick={click2} to={(localStorage.getItem("x-token")===null)?"/":"/admin/dashboard"}><img
                     className="navbar-img"
                     src={logo}
                     alt="Mi ranchito Magico"
