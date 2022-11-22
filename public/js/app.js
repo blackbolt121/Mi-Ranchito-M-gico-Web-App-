@@ -24417,8 +24417,8 @@ function Comment(props) {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "comment__line--info",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("strong", {
-            children: "Un usuario: "
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("strong", {
+            children: [props.user, ": "]
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
           className: "comment__text",
@@ -24429,7 +24429,8 @@ function Comment(props) {
   });
 }
 Comment.defaultProps = {
-  comment: "PFP is an acronym for profile picture. It does have other meanings, however, profile pic has become more common in recent years. The acronym has been rapidly adopted across all social networks and messengers across all user groups. Thus today it is mostly associated with one’s avatar or, in other words, profile picture."
+  comment: "PFP is an acronym for profile picture. It does have other meanings, however, profile pic has become more common in recent years. The acronym has been rapidly adopted across all social networks and messengers across all user groups. Thus today it is mostly associated with one’s avatar or, in other words, profile picture.",
+  user: "Usuario"
 };
 function CommentText(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
@@ -24457,10 +24458,9 @@ function RecomendacionesGo() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
     children: [localStorage.getItem("x-token") === null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_router__WEBPACK_IMPORTED_MODULE_4__.Navigate, {
       to: "/login"
-    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_0__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_RanchitoMagico__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      lower: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Comment, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(CommentText, {})]
-      })
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_0__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_RanchitoMagico__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+      className: "comment__area",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Comment, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(CommentText, {})]
     })]
   });
 }
@@ -24821,7 +24821,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".comment__line{\n    margin-top: 1rem;\n    width: 100%;\n    display: inline-grid;\n    grid-template: 1fr / 50px 90% ;\n    align-items: center;\n    justify-content: center;\n}\n.comment__line textarea{\n    margin-left: 1rem;\n    padding: 0.2rem !important;\n    width: 95%;\n}\n.comment__line--info{\n    display: flex;\n    justify-content: left;\n    flex-direction: column;\n}\n.comment__line--info button{\n    width: 80px;\n    font-size: 1rem;\n    margin-top: 1rem;\n    align-self: flex-end;\n}\n.comment__line--info > p{\n    margin-left: 1rem;\n    margin-bottom: 0;\n    display: flex;\n    align-items: flex-start !important;\n    font-size: 1.5rem !important;\n}\n.comment__text{\n    text-align: justify !important;\n    font-size: 2rem !important;\n}\n.comment__line img{\n    width: 50px !important;\n    height: 50px;\n    border: 2px solid var(--fh_color);\n    border-radius: 50%;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".comment__line{\n    margin-top: 1rem;\n    width: 100%;\n    display: inline-grid;\n    grid-template: 1fr / 50px 90% ;\n    align-items: center;\n    justify-content: center;\n}\n.comment__line textarea{\n    margin-left: 1rem;\n    padding: 0.2rem !important;\n    width: 95%;\n}\n.comment__line--info{\n    display: flex;\n    justify-content: left;\n    flex-direction: column;\n}\n.comment__line--info button{\n    width: 80px;\n    font-size: 1rem;\n    margin-top: 1rem;\n    align-self: flex-end;\n}\n.comment__line--info > p{\n    margin-left: 1rem;\n    margin-bottom: 0;\n    display: flex;\n    align-items: flex-start !important;\n    font-size: 1.5rem !important;\n}\n.comment__text{\n    text-align: justify !important;\n    font-size: 2rem !important;\n}\n.comment__line img{\n    width: 50px !important;\n    height: 50px;\n    border: 2px solid var(--fh_color);\n    border-radius: 50%;\n}\n.comment__area{\n    width: 95%;\n    margin: 0 auto;\n}\n@media (max-width: 800px){\n    .comment__area{\n        width: 80%;\n    }\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

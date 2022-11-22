@@ -39,3 +39,12 @@
     border: 2px solid var(--fh_color);
     border-radius: 50%;
 }
+.comment__area{
+    width: 95%;
+    margin: 0 auto;
+}
+@media (max-width: 800px){
+    .comment__area{
+        width: 80%;
+    }
+}
