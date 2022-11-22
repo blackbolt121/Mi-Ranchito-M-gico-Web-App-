@@ -39,3 +39,4 @@ Route::get("/tipo_actividades",[ActividadesController::class,"getTipoActividades
 Route::post("/actividad",[ActividadesController::class,"crearActividad"]);
 Route::put("/actividad",[ActividadesController::class,"editarActividad"]);
 Route::get("/actividad/{id}",[ActividadesController::class,"obtenerActividad"]);
+Route::post("/comment",[\App\Http\Controllers\api\RecomendacionController::class,"addComment"]);
