@@ -67,16 +67,16 @@ class User extends Model
         }
     }
     public static function login(String $email, String $password, String $user_agent, String $ip){
-        $count = User::all()->where("email","=", $email);
+        $count = User::query()->where("email","=", $email);
         if(($size = $count->count()) == 1){
-            $id_user = $count[0]["id"];
-            if(!Hash::check($password,$count[0]["password"])){
+            $user = $count->get()->all()[0];
+            if(!Hash::check($password,$user->password)){
                 return false;
             }
             $id = uniqid();
             $session = new session();
             $session->id = $id;
-            $session->id_user = $id_user;
+            $session->id_user = $user->id;
             $session->user_agent = $user_agent;
             $session->ip_address = $ip;
             $session->save();

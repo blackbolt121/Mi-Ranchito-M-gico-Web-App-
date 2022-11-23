@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('recomendaciones', function (Blueprint $table) {
-            $table->foreignId("id_visita")->primary()->references("id")->on("visitas");
+        Schema::create('recomendacions', function (Blueprint $table) {
+            $table->id()->autoIncrement();
+            $table->foreignid("id_visita")->references("id")->on("visitas");
             $table->string("comentario",300);
             $table->double("puntuacion");
             $table->timestamps();

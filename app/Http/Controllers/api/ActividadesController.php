@@ -55,4 +55,7 @@ class ActividadesController extends Controller
         }
         return response("{status:'success'}",200);
     }
+    public function obtenerActividadesFront(int $id){
+        return Actividades::query()->select("actividades.nombre","actividades.descripcion","actividades.telefono","actividades.latitud","actividades.longitud","actividades.tipo","tipo_actividades.categoria")->join("tipo_actividades","actividades.tipo","tipo_actividades.id")->where("actividades.ranchito","=",$id)->get()->all();
+    }
 }

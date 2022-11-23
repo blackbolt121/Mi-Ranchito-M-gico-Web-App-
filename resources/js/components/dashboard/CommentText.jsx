@@ -16,10 +16,13 @@ export default function CommentText(props){
                 "token":localStorage.getItem("x-token"),
                 "comentario":comment
             })
-        }).then(response => { alert(response.status); return response.json()})
-            .then(response => alert(response.status))
+        }).then(response => { return response.json()} )
+            .then(response => {
+                setComment("")
+                window.location.reload(false)
+                alert(response.status)
+            })
             .catch(error => {
-                alert(error.message)
                 alert("Fallo en subir tu opinión")
             })
     }

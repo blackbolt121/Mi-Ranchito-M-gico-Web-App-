@@ -1,32 +1,35 @@
-import Header from "../Header";
+import {Navigate} from "react-router";
+import {useEffect} from "react";
+import {useParams} from "react-router-dom";
+import {useState} from "react";
+
 import RanchitoMagico from "../RanchitoMagico";
+import Header from "../Header";
+import CommentText from "./CommentText";
+import Comment from "./Comment"
+
 
 import "../../css/RecomendacionesGo.css";
-import {Navigate} from "react-router";
-import CommentText from "./CommentText";
-function Comment(props){
-    return <>
-        <div className={"comment__line"}>
-            <img src={"https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"}/>
-            <div className={"comment__line--info"}>
-                <p><strong>{props.user}: </strong></p>
-                <p className={"comment__text"}>{props.comment}</p>
-            </div>
-        </div>
-    </>
-}
-Comment.defaultProps = {
-    comment: "PFP is an acronym for profile picture. It does have other meanings, however, profile pic has become more common in recent years. The acronym has been rapidly adopted across all social networks and messengers across all user groups. Thus today it is mostly associated with one’s avatar or, in other words, profile picture.",
-    user: "Usuario"
-}
+import network from "../network";
+
+
 
 export default function RecomendacionesGo(){
+    let {id} = useParams()
+    let [comments,setComments] = useState([])
+    useEffect(()=>{
+        fetch(`http://${network.ip}/api/recomendaciones/${id}`)
+            .then(response => response.json())
+            .then(comentarios => {
+                if(comentarios.length > 0) setComments(comentarios.map(comentario => <Comment comment={comentario.comentario}/>))
+            })
+    }, [])
     return <>
         {(localStorage.getItem("x-token")===null)?<Navigate to={"/login"}/>:<></>}
         <Header/>
         <RanchitoMagico/>
         <div className={"comment__area"}>
-            <Comment/>
+            {comments}
             <CommentText/>
         </div>
 

@@ -26,15 +26,25 @@ class RecomendacionController extends Controller
                 return response(json_encode(["status"=>"No podemos recibir tu opinión de un lugar que no has visitado..."]),202);
             }
             $id_visita = $visitas->get()[0]->id;
+
             $recomendacion = new Recomendacion();
             $recomendacion->id_visita = $id_visita;
             $recomendacion->comentario = $comment->comentario;
+            $recomendacion->puntuacion = 5.0;
             $recomendacion->save();
 
-            return response("{status:\"Hemos recibido tu opinión muchas gracias!!!\"}",202);
+            return response(json_encode(["status"=>"Gracias por tu recomendación!!!"]),202);
         }catch (\Exception $exception){
             return response(json_encode(["status"=>$exception->getMessage()]),200);
         }
 
+    }
+    public function obtenerRecomendaciones(int $id){
+        return Recomendacion::query()
+            ->select("recomendacions.comentario")
+            ->join("visitas","recomendacions.id_visita","visitas.id")
+            ->where("visitas.id_ranchito","=",$id)
+            ->get()
+            ->all();
     }
 }

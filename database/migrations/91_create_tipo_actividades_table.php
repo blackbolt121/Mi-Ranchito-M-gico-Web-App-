@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('tipo_actividades', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string("categoria",30)->nullable(false);
+            $table->string("categoria",30)->nullable(false)->unique();
             $table->timestamps();
         });
     }

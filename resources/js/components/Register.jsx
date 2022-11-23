@@ -3,7 +3,6 @@ import {Fragment, useState} from "react";
 import Campo from "./Campo";
 import SelectEstadosMunicipios from "./SelectEstadosMunicipios";
 import Header from "./Header";
-import redirect from "./redirect";
 import {Navigate} from "react-router";
 
 export default function Register()
@@ -52,7 +51,6 @@ export default function Register()
             target.classList.add("register_campo_invalid")
         }else{
             target.classList.remove("register_campo_invalid");
-            console.log("Todo bien")
         }
     }
     const validateDate = (target) => {
@@ -84,22 +82,18 @@ export default function Register()
                 break;
             case "nacimiento":
                 setNacimiento(event.target.value);
-                console.log(event.target.value)
                 validateDate(event.target)
                 break;
             case "estado":
                 setEstado(parseInt(event.target.value));
-                console.log(estado)
                 validateCompare(event.target,0)
                 break;
             case "municipio":
                 setMunicipio(parseInt(event.target.value));
-                console.log(municipio)
                 validateCompare(event.target, 0)
                 break;
             case "ciudad":
                 setCiudad(event.target.value);
-                console.log(ciudad);
                 validateName(event.target)
                 break;
             case "contraseña":
@@ -118,25 +112,32 @@ export default function Register()
     }
     const register = (event) =>{
         event.preventDefault();
+
         if(contraseña === ccontraseña && contraseña.length > 0 && ccontraseña.length > 0 && municipio != 0 && estado != 0 && nombre.length >= 2 && email.length >= 2){
+            let content = JSON.stringify({
+                "nombre":nombre,
+                "email":email,
+                "password":contraseña,
+                "cpassword":ccontraseña,
+                "municipio":municipio,
+                "estado":estado,
+                "ciudad":ciudad,
+                "direccion":direccion+direccion2,
+                "nacimiento":String(nacimiento)
+            })
+            console.log(content)
             fetch("http://localhost:8000/api/user/register",{
                 method:"POST",
                 "Content-Type":"application/json",
                 "Accept":"application/json",
-                body : JSON.stringify({
-                    "nombre":nombre,
-                    "email":email,
-                    "password":contraseña,
-                    "cpassword":ccontraseña,
-                    "municipio":municipio,
-                    "estado":estado,
-                    "ciudad":ciudad,
-                    "direccion":direccion+direccion2,
-                    "nacimiento":String(nacimiento)
-                })
+                body : content
             }).then( response => {
                 if(response.status === 200 && response.ok){
                     setNavigate(<Navigate to={"/login"}/>)
+                }else{
+                    if(response.status === 400){
+                        alert("El correo electronico proporcionado ya se encuentra en uso")
+                    }
                 }
             }).catch(error => {
                 setNavigate(<p>No se pudo iniciar session</p>)

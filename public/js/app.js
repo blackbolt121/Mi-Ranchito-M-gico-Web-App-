@@ -14388,10 +14388,11 @@ var EditActividad = function EditActividad(props) {
     limpiarFormulario();
   }
   function onChangeRanchito(event) {
+    limpiarFormulario();
     var id = event.target.value;
     setRanchito(id);
     if (id != 0) {
-      fetch("http://".concat(_network__WEBPACK_IMPORTED_MODULE_1__["default"].ip, "/api/actividad/").concat(id)).then(function (response) {
+      fetch("http://".concat(_network__WEBPACK_IMPORTED_MODULE_1__["default"].ip, "/api/admin/actividad/").concat(id)).then(function (response) {
         return response.json();
       }).then(function (response) {
         setActividadesList(response);
@@ -23604,16 +23605,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Campo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Campo */ "./resources/js/components/Campo.jsx");
 /* harmony import */ var _SelectEstadosMunicipios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SelectEstadosMunicipios */ "./resources/js/components/SelectEstadosMunicipios.jsx");
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Header */ "./resources/js/components/Header.jsx");
-/* harmony import */ var _redirect__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./redirect */ "./resources/js/components/redirect.jsx");
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -23703,7 +23702,6 @@ function Register() {
       target.classList.add("register_campo_invalid");
     } else {
       target.classList.remove("register_campo_invalid");
-      console.log("Todo bien");
     }
   };
   var validateDate = function validateDate(target) {
@@ -23735,22 +23733,18 @@ function Register() {
         break;
       case "nacimiento":
         setNacimiento(event.target.value);
-        console.log(event.target.value);
         validateDate(event.target);
         break;
       case "estado":
         setEstado(parseInt(event.target.value));
-        console.log(estado);
         validateCompare(event.target, 0);
         break;
       case "municipio":
         setMunicipio(parseInt(event.target.value));
-        console.log(municipio);
         validateCompare(event.target, 0);
         break;
       case "ciudad":
         setCiudad(event.target.value);
-        console.log(ciudad);
         validateName(event.target);
         break;
       case "contraseña":
@@ -23769,29 +23763,35 @@ function Register() {
   var register = function register(event) {
     event.preventDefault();
     if (contraseña === ccontraseña && contraseña.length > 0 && ccontraseña.length > 0 && municipio != 0 && estado != 0 && nombre.length >= 2 && email.length >= 2) {
+      var content = JSON.stringify({
+        "nombre": nombre,
+        "email": email,
+        "password": contraseña,
+        "cpassword": ccontraseña,
+        "municipio": municipio,
+        "estado": estado,
+        "ciudad": ciudad,
+        "direccion": direccion + direccion2,
+        "nacimiento": String(nacimiento)
+      });
+      console.log(content);
       fetch("http://localhost:8000/api/user/register", {
         method: "POST",
         "Content-Type": "application/json",
         "Accept": "application/json",
-        body: JSON.stringify({
-          "nombre": nombre,
-          "email": email,
-          "password": contraseña,
-          "cpassword": ccontraseña,
-          "municipio": municipio,
-          "estado": estado,
-          "ciudad": ciudad,
-          "direccion": direccion + direccion2,
-          "nacimiento": String(nacimiento)
-        })
+        body: content
       }).then(function (response) {
         if (response.status === 200 && response.ok) {
-          setNavigate( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router__WEBPACK_IMPORTED_MODULE_7__.Navigate, {
+          setNavigate( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router__WEBPACK_IMPORTED_MODULE_6__.Navigate, {
             to: "/login"
           }));
+        } else {
+          if (response.status === 400) {
+            alert("El correo electronico proporcionado ya se encuentra en uso");
+          }
         }
       })["catch"](function (error) {
-        setNavigate( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
+        setNavigate( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
           children: "No se pudo iniciar session"
         }));
       });
@@ -23799,73 +23799,73 @@ function Register() {
       window.alert("Revise su formulario");
     }
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("title", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("title", {
       children: "Registrate!!!"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_4__["default"], {}), localStorage.getItem("x-token") !== null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router__WEBPACK_IMPORTED_MODULE_7__.Navigate, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_4__["default"], {}), localStorage.getItem("x-token") !== null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router__WEBPACK_IMPORTED_MODULE_6__.Navigate, {
       to: "/dashboard"
-    }) : null, navigate, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("form", {
+    }) : null, navigate, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("form", {
       className: "register_form",
       onSubmit: function onSubmit(e) {
         return register(e);
       },
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h1", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h1", {
         className: "register_title",
         children: "Registro"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Campo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Campo__WEBPACK_IMPORTED_MODULE_2__["default"], {
         typeInput: "text",
         nombre: "nombre",
         description: "Nombre: ",
         icon: "fas fa-user",
         handler: changeHandler
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Campo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Campo__WEBPACK_IMPORTED_MODULE_2__["default"], {
         state: email,
         typeInput: "_email",
         nombre: "email",
         description: "Email: ",
         icon: "fas fa-envelope",
         handler: changeHandler
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Campo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Campo__WEBPACK_IMPORTED_MODULE_2__["default"], {
         typeInput: "text",
         nombre: "direccion",
         description: "Direccion: ",
         icon: "fas fa-address-book",
         handler: changeHandler
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Campo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Campo__WEBPACK_IMPORTED_MODULE_2__["default"], {
         typeInput: "text",
         nombre: "direccion2",
         description: "Direccion 2: ",
         icon: "fas fa-address-book",
         handler: changeHandler
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Campo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Campo__WEBPACK_IMPORTED_MODULE_2__["default"], {
         typeInput: "date",
         nombre: "nacimiento",
         description: "Fecha de nacimiento: ",
         icon: "fas fa-birthday-cake",
         handler: changeHandler
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_SelectEstadosMunicipios__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_SelectEstadosMunicipios__WEBPACK_IMPORTED_MODULE_3__["default"], {
         handler: changeHandler
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Campo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Campo__WEBPACK_IMPORTED_MODULE_2__["default"], {
         typeInput: "text",
         nombre: "ciudad",
         description: "Ciudad: ",
         icon: "fas fa-city",
         handler: changeHandler
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Campo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Campo__WEBPACK_IMPORTED_MODULE_2__["default"], {
         typeInput: "password",
         nombre: "contraseña",
         description: "Contraseña: ",
         icon: "fa-solid fa-key",
         handler: changeHandler
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Campo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Campo__WEBPACK_IMPORTED_MODULE_2__["default"], {
         typeInput: "password",
         nombre: "ccontraseña",
         description: "Confirmar contraseña: ",
         icon: "fa-solid fa-key",
         handler: changeHandler
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         className: "register_submit",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("button", {
           type: "submit",
           className: "btn btn-primary",
           children: "Registrarse"
@@ -24182,6 +24182,48 @@ function ToGo() {
 
 /***/ }),
 
+/***/ "./resources/js/components/dashboard/Comment.jsx":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/dashboard/Comment.jsx ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Comment)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+function Comment(props) {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+      className: "comment__line",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+        src: "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        className: "comment__line--info",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("strong", {
+            children: [props.user, ": "]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+          className: "comment__text",
+          children: props.comment
+        })]
+      })]
+    })
+  });
+}
+Comment.defaultProps = {
+  comment: "PFP is an acronym for profile picture. It does have other meanings, however, profile pic has become more common in recent years. The acronym has been rapidly adopted across all social networks and messengers across all user groups. Thus today it is mostly associated with one’s avatar or, in other words, profile picture.",
+  user: "Un usuario dijo..."
+};
+
+/***/ }),
+
 /***/ "./resources/js/components/dashboard/CommentText.jsx":
 /*!***********************************************************!*\
   !*** ./resources/js/components/dashboard/CommentText.jsx ***!
@@ -24228,12 +24270,12 @@ function CommentText(props) {
         "comentario": comment
       })
     }).then(function (response) {
-      alert(response.status);
       return response.json();
     }).then(function (response) {
-      return alert(response.status);
+      setComment("");
+      window.location.reload(false);
+      alert(response.status);
     })["catch"](function (error) {
-      alert(error.message);
       alert("Fallo en subir tu opinión");
     });
   }
@@ -24481,12 +24523,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ RecomendacionesGo)
 /* harmony export */ });
-/* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Header */ "./resources/js/components/Header.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _RanchitoMagico__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../RanchitoMagico */ "./resources/js/components/RanchitoMagico.jsx");
-/* harmony import */ var _css_RecomendacionesGo_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../css/RecomendacionesGo.css */ "./resources/js/css/RecomendacionesGo.css");
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Header */ "./resources/js/components/Header.jsx");
 /* harmony import */ var _CommentText__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CommentText */ "./resources/js/components/dashboard/CommentText.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Comment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Comment */ "./resources/js/components/dashboard/Comment.jsx");
+/* harmony import */ var _css_RecomendacionesGo_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../css/RecomendacionesGo.css */ "./resources/js/css/RecomendacionesGo.css");
+/* harmony import */ var _network__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../network */ "./resources/js/components/network.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
@@ -24495,37 +24546,35 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function Comment(props) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      className: "comment__line",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-        src: "https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        className: "comment__line--info",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("strong", {
-            children: [props.user, ": "]
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-          className: "comment__text",
-          children: props.comment
-        })]
-      })]
-    })
-  });
-}
-Comment.defaultProps = {
-  comment: "PFP is an acronym for profile picture. It does have other meanings, however, profile pic has become more common in recent years. The acronym has been rapidly adopted across all social networks and messengers across all user groups. Thus today it is mostly associated with one’s avatar or, in other words, profile picture.",
-  user: "Usuario"
-};
+
+
+
+
+
 function RecomendacionesGo() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-    children: [localStorage.getItem("x-token") === null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router__WEBPACK_IMPORTED_MODULE_5__.Navigate, {
+  var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useParams)(),
+    id = _useParams.id;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState2 = _slicedToArray(_useState, 2),
+    comments = _useState2[0],
+    setComments = _useState2[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetch("http://".concat(_network__WEBPACK_IMPORTED_MODULE_6__["default"].ip, "/api/recomendaciones/").concat(id)).then(function (response) {
+      return response.json();
+    }).then(function (comentarios) {
+      if (comentarios.length > 0) setComments(comentarios.map(function (comentario) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Comment__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          comment: comentario.comentario
+        });
+      }));
+    });
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
+    children: [localStorage.getItem("x-token") === null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Navigate, {
       to: "/login"
-    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_0__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_RanchitoMagico__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_RanchitoMagico__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
       className: "comment__area",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Comment, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_CommentText__WEBPACK_IMPORTED_MODULE_3__["default"], {})]
+      children: [comments, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_CommentText__WEBPACK_IMPORTED_MODULE_3__["default"], {})]
     })]
   });
 }
@@ -24666,38 +24715,6 @@ var network = {
   ip: "localhost:8000"
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (network);
-
-/***/ }),
-
-/***/ "./resources/js/components/redirect.jsx":
-/*!**********************************************!*\
-  !*** ./resources/js/components/redirect.jsx ***!
-  \**********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-var redirect = function redirect() {
-  var content = window.localStorage.getItem("X-TOKEN") !== null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router__WEBPACK_IMPORTED_MODULE_1__.Navigate, {
-    to: "/dashboard"
-  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router__WEBPACK_IMPORTED_MODULE_1__.Navigate, {
-      to: "/login"
-    })
-  });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-    children: content
-  });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (redirect);
 
 /***/ }),
 

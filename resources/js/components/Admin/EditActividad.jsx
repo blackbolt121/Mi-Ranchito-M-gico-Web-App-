@@ -87,14 +87,14 @@ const EditActividad = (props) => {
         limpiarFormulario()
     }
     function onChangeRanchito(event){
-
+        limpiarFormulario()
         let id = event.target.value
 
         setRanchito(id)
 
         if( id != 0 ) {
 
-            fetch(`http://${network.ip}/api/actividad/${id}`)
+            fetch(`http://${network.ip}/api/admin/actividad/${id}`)
                 .then(response => response.json())
                 .then(response => {
                     setActividadesList(response)
