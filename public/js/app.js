@@ -24182,6 +24182,63 @@ function ToGo() {
 
 /***/ }),
 
+/***/ "./resources/js/components/dashboard/Actividad.jsx":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/dashboard/Actividad.jsx ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Actividad)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+function Actividad(props) {
+  var map = "https://maps.google.com/?q=".concat(props.latitud, ",").concat(props.longitud);
+  var telefono = "(" + props.telefono.substring(0, 3) + ") " + props.telefono.substring(3, props.telefono.length);
+  var telefonoRender = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", {
+    target: "_blank",
+    className: "card-text",
+    href: "tel:+52".concat(props.telefono),
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("i", {
+      className: "fa-solid fa-phone"
+    }), " ", telefono]
+  });
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+      className: "visit_card",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        className: "card-title visit_title visit_card--title",
+        children: props.nombre
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        className: "card-text",
+        children: props.descripcion
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        className: "card-text",
+        children: props.categoria
+      }), props.telefono != "" ? telefonoRender : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+        target: "_blank",
+        href: map,
+        children: "Ubicaci\xF3n"
+      })]
+    })
+  });
+}
+Actividad.defaultProps = {
+  nombre: "Actividad",
+  descripcion: "descripcion",
+  categoria: "categoria",
+  telefono: "3232121812",
+  latitud: "0.0",
+  longitud: "0.0"
+};
+
+/***/ }),
+
 /***/ "./resources/js/components/dashboard/Comment.jsx":
 /*!*******************************************************!*\
   !*** ./resources/js/components/dashboard/Comment.jsx ***!
@@ -24632,8 +24689,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Header */ "./resources/js/components/Header.jsx");
 /* harmony import */ var _RanchitoMagico__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../RanchitoMagico */ "./resources/js/components/RanchitoMagico.jsx");
 /* harmony import */ var _css_VisitarGo_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../css/VisitarGo.css */ "./resources/js/css/VisitarGo.css");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var _Actividad__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Actividad */ "./resources/js/components/dashboard/Actividad.jsx");
+/* harmony import */ var _network__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../network */ "./resources/js/components/network.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //Adding react libraries
 
 //Adiing componentes
@@ -24645,9 +24710,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
+
 var VisitarGo = function VisitarGo() {
-  var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useParams)(),
+  var _useParams = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useParams)(),
     id = _useParams.id;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+    _useState2 = _slicedToArray(_useState, 2),
+    actividades = _useState2[0],
+    setActividades = _useState2[1];
   var visit = function visit(event) {
     event.preventDefault();
     fetch("http://localhost:8000/api/visita", {
@@ -24673,22 +24744,41 @@ var VisitarGo = function VisitarGo() {
     });
   };
   var Add = function Add() {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("form", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("form", {
       onSubmit: visit,
       className: "VistGo__add",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("button", {
         type: "submit",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("i", {
           className: "fas fa-plus"
         }), " Visitar"]
       })
     });
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-    children: [localStorage.getItem("x-token") === null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Navigate, {
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    fetch("http://".concat(_network__WEBPACK_IMPORTED_MODULE_5__["default"].ip, "/api/actividad/").concat(id)).then(function (response) {
+      return response.json();
+    }).then(function (response) {
+      return setActividades(response.map(function (x) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Actividad__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          nombre: x.nombre,
+          descripcion: x.descripcion,
+          telefono: x.telefono,
+          latitud: x.latitud,
+          longitud: x.longitud,
+          categoria: x.categoria
+        });
+      }));
+    });
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    children: [localStorage.getItem("x-token") === null ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(Navigate, {
       to: "/login"
-    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_RanchitoMagico__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      upper: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(Add, {})
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Header__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_RanchitoMagico__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      upper: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(Add, {})
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+      className: "card_container",
+      children: actividades
     })]
   });
 };
@@ -24975,7 +25065,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".VistGo__add{\n    align-self: flex-end;\n    font-size: 2rem;\n    margin-bottom: 1rem;\n}\n.VistGo__add button{\n    padding: 1rem 2rem;\n    width: 100%;\n    background-color: #0d6efd;\n    border: none;\n    color: white;\n    cursor: pointer;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".VistGo__add{\n    align-self: flex-end;\n    font-size: 2rem;\n    margin-bottom: 1rem;\n}\n.VistGo__add button{\n    padding: 1rem 2rem;\n    width: 100%;\n    background-color: #0d6efd;\n    border: none;\n    color: white;\n    cursor: pointer;\n}\n.visit_card{\n    width: 40%;\n    padding: 1.5rem;\n    font-size: 2rem;\n    border-radius: 2rem !important;\n    text-align: center;\n    background-color: rgb(240,240,240) !important;\n    display: flex;\n    flex-direction: column;\n\n}\n.visit_card--title{\n    font-weight: bolder;\n}\n@media (max-width: 900px){\n    .visit_card{\n        width: 95%;\n    }\n}\n.visit_title{\n    font-size: 3rem;\n\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
