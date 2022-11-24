@@ -18,7 +18,7 @@ const AdminDashboard = (event) => {
                     <div>
                         <h1><i style={{color: "red"}} className="fas fa-plane"></i>Usuarios</h1>
                     </div>
-                    <Link className={"dashboard_btn"} to={"/dashboard/visitar"}>Ir</Link>
+                    <Link className={"dashboard_btn"} to={"/admin/usuarios"}>Ir</Link>
                 </div>
             </div>
         </div>

@@ -47,7 +47,7 @@ class UserController extends Controller
         }
     }
 
-    function login(Request $request)
+    public function login(Request $request)
     {
         $body = json_decode($request->getContent());
         if ((!isset($body->email) && !isset($body->password)) || (strlen($body->password)==0))
@@ -61,6 +61,12 @@ class UserController extends Controller
             return $status;
         }
     }
+
+    public function obtenerUsuarios(Request $request){
+        return User::query()->select("id","email")->get()->all();
+    }
+
+
     function getUsersTravel(Request $request){
         $results = Visita::query()->select("users.nombre","users.email","visitas.id as id_visita","visitas.id_user","visitas.id_ranchito","ciudades.nombre as nombre_ciudad","visitas.visitado")->where("visitas.visitado","=",1)->join("users","users.id","visitas.id_user")->join("ranchitos","ranchitos.id","visitas.id_ranchito")->join("ciudades","ciudades.id","visitas.id_ranchito");
         return $results->get()->all();
